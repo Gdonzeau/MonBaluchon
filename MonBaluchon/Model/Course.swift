@@ -8,8 +8,12 @@
 import Foundation
 
 struct Conversion {
-    var course:String
-    var author:String
-    var imageData:Data
+    let success:Bool
+    let timestamp:Int
+    let base:String
+    let date:String
+    struct rates {
+        let EUR:Int
+    }
     
 }

@@ -11,7 +11,7 @@
         <!--Traduction-->
         <scene sceneID="Ag5-ki-5KP">
             <objects>
-                <viewController id="seM-3q-SX5" sceneMemberID="viewController">
+                <viewController id="seM-3q-SX5" customClass="TranslationViewController" customModule="MonBaluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kv0-Or-fsi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
