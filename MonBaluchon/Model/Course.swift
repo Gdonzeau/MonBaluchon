@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Conversion {
+struct Conversion: Codable {
     let success:Bool
     let timestamp:Int
     let base:String

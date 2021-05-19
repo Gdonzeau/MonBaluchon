@@ -17,5 +17,6 @@ class ChangeValueViewController: UIViewController {
   
     @IBAction func getConversion(_ sender: UIButton) {
         ConversionService.getConversion()
+        testApple.getApple()
     }
 }

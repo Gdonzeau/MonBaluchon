@@ -21,11 +21,12 @@ class ConversionService {
     private static var final = "&callback=MY_FUNCTION"
     
     static func getConversion() {
-        let url = URL(string: urlBase + authorization + code + symbol + value + base + valueBase + final)!
+        let url = URL(string: urlBase + authorization + code + symbol + value + base + valueBase)! // + final)!
         print(url)
         
         //var request = URLRequest(url: quoteUrl)
         var request = URLRequest(url:url)
+        let decoder = JSONDecoder()
         request.httpMethod = "POST"
         let body = "method=getQuote&lang=en&format=json"
         request.httpBody = body.data(using: .utf8)
@@ -38,8 +39,17 @@ class ConversionService {
                 if let result2 = String( data: dataUnwrapped , encoding: .utf8) {
                     print("Reçu : \(result2)")
                     //let cours:Conversion = try? JSONDecoder().decode([Any: Any].self, from: <#T##Data#>)
+                    let json = """
+                    \(result2)
+                    """.data(using: .utf8)!
+                    if let product = try? decoder.decode(Conversion.self, from: json) {
+                        print(product.date)
+                    }
                 }
                 
+                
+                
+                /*
                 if let responseJSON = try? JSONDecoder().decode([String: Bool].self, from: dataUnwrapped) ,
                    let text = responseJSON["success"] { //,
                     //let author = responseJSON["rates"] {
@@ -51,6 +61,7 @@ class ConversionService {
                 } else {
                     print("pas compris2")
                 }
+                */
             }
             
             DispatchQueue.main.async {

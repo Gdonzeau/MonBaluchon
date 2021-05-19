@@ -19,7 +19,9 @@ class WeatherService {
     private static var place = "q="
     private static var city = "Paris"
     
+    
     static func getWeather() {
+        //var town = Weather
         let url = URL(string: "http://data.fixer.io/api/latest?" + "\(place)" + "\(city)" + "\(authorization)" + "\(code)")!
         print(url)
         
@@ -33,6 +35,18 @@ class WeatherService {
             print("1")
             //print(data)
             if let dataUnwrapped = data {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                                //decode directly to an array of User structs rather than a Response
+                                if let decodedResponse = try? decoder.decode([Weather].self, from: dataUnwrapped) {
+                                    print("Décodé: \(decodedResponse)")
+                                    //town = Weather
+                                    //print(town)
+                                    
+                                } else {
+                                    print("Rien")
+                                }
+                /*
                 if let result2 = String( data: dataUnwrapped , encoding: .utf8) {
                     print("Reçu : \(result2)")
                 }
@@ -48,6 +62,7 @@ class WeatherService {
                 } else {
                     print("pas compris2")
                 }
+ */
             }
             DispatchQueue.main.async {
                 print("2")
@@ -74,6 +89,4 @@ class WeatherService {
         
         print("Demande")
     }
-    
-    
 }
