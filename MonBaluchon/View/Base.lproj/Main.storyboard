@@ -15,8 +15,27 @@
                     <view key="view" contentMode="scaleToFill" id="Kv0-Or-fsi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNs-xi-yBa">
+                                <rect key="frame" x="20" y="338" width="374" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="A3G-bw-kkK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Interprrête"/>
+                                <connections>
+                                    <action selector="tranlation:" destination="seM-3q-SX5" eventType="touchUpInside" id="ege-hg-7vH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="SyZ-cA-6qA"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SyZ-cA-6qA" firstAttribute="trailing" secondItem="HNs-xi-yBa" secondAttribute="trailing" constant="20" id="NYQ-6F-RXG"/>
+                            <constraint firstItem="HNs-xi-yBa" firstAttribute="centerY" secondItem="Kv0-Or-fsi" secondAttribute="centerY" id="btB-M7-EYK"/>
+                            <constraint firstItem="HNs-xi-yBa" firstAttribute="leading" secondItem="SyZ-cA-6qA" secondAttribute="leading" constant="20" id="fTY-xL-XX8"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Traduction" image="Translate" id="dYd-Ze-2Wm"/>
                 </viewController>

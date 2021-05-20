@@ -26,6 +26,7 @@ class WeatherService {
         print(url)
         
         var request = URLRequest(url: urlBase2)
+        let decoder = JSONDecoder()
         //var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let body = "method=getQuote&lang=en&format=json"
@@ -33,57 +34,77 @@ class WeatherService {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { (data, response, error) in
             print("1")
-            //print(data)
             if let dataUnwrapped = data {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                                //decode directly to an array of User structs rather than a Response
-                                if let decodedResponse = try? decoder.decode([Weather].self, from: dataUnwrapped) {
-                                    print("Décodé: \(decodedResponse)")
-                                    //town = Weather
-                                    //print(town)
-                                    
-                                } else {
-                                    print("Rien")
-                                }
-                /*
                 if let result2 = String( data: dataUnwrapped , encoding: .utf8) {
                     print("Reçu : \(result2)")
+                    let json = """
+                    \(result2)
+                    """.data(using: .utf8)!
+                    print(json)
                 }
-                
-                if let responseJSON = try? JSONDecoder().decode([String: String].self, from: dataUnwrapped) ,
-                   let text = responseJSON["success"] { //,
-                    //let author = responseJSON["rates"] {
-                    print("réponse reçue")
-                   // print(data)
-                    print(responseJSON)
-                    print(text)
-                    //print(author)
-                } else {
-                    print("pas compris2")
-                }
- */
-            }
-            DispatchQueue.main.async {
-                print("2")
-                if let data = data, error == nil {
-                    print("3")
-                    if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                        print("4")
-                        if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data) ,
-                           let text = responseJSON["country"] { //,
-                            //let author = responseJSON["rates"] {
-                            print("réponse reçue")
-                            print(data)
-                            print(responseJSON)
-                            print(text)
-                            //print(author)
-                        } else {
-                            print("pas compris")
-                        }
-                    }
+                do {
+                let welcomeweather = try JSONDecoder().decode(WelcomeWeather.self, from: dataUnwrapped)
+                    print(welcomeweather.wind.speed)
+                    print(welcomeweather.wind.deg)
+                } catch {
+                    print("Problème")
                 }
             }
+            //print(data)
+            /*
+             if let dataUnwrapped = data {
+             let decoder = JSONDecoder()
+             decoder.dateDecodingStrategy = .iso8601
+             //decode directly to an array of User structs rather than a Response
+             if let decodedResponse = try? decoder.decode([Weather].self, from: dataUnwrapped) {
+             print("Décodé: \(decodedResponse)")
+             //town = Weather
+             //print(town)
+             
+             } else {
+             print("Rien")
+             }
+             /*
+             if let result2 = String( data: dataUnwrapped , encoding: .utf8) {
+             print("Reçu : \(result2)")
+             }
+             
+             if let responseJSON = try? JSONDecoder().decode([String: String].self, from: dataUnwrapped) ,
+             let text = responseJSON["success"] { //,
+             //let author = responseJSON["rates"] {
+             print("réponse reçue")
+             // print(data)
+             print(responseJSON)
+             print(text)
+             //print(author)
+             } else {
+             print("pas compris2")
+             }
+             */
+             }
+             */
+            /*
+             DispatchQueue.main.async {
+             print("2")
+             if let data = data, error == nil {
+             print("3")
+             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+             print("4")
+             if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data) ,
+             let text = responseJSON["country"] { //,
+             //let author = responseJSON["rates"] {
+             print("réponse reçue")
+             print(data)
+             print(responseJSON)
+             print(text)
+             //print(author)
+             } else {
+             print("pas compris")
+             }
+             }
+             }
+             }
+             */
         }
         task.resume()
         

@@ -14,4 +14,7 @@ class TranslationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func tranlation(_ sender: UIButton) {
+        TranslationService.getTranslation()
+    }
 }
