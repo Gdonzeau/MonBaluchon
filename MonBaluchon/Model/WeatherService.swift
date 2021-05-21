@@ -26,7 +26,6 @@ class WeatherService {
         print(url)
         
         var request = URLRequest(url: urlBase2)
-        let decoder = JSONDecoder()
         //var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let body = "method=getQuote&lang=en&format=json"

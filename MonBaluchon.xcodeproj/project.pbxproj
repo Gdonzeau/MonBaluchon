@@ -26,6 +26,10 @@
 		046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36F5265692BD0073BCC0 /* TranslationService.swift */; };
 		046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36FD2656BD2D0073BCC0 /* Translation.swift */; };
 		046B370626570B4F0073BCC0 /* CourseRUB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B370526570B4F0073BCC0 /* CourseRUB.swift */; };
+		046B370E2657B52D0073BCC0 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B370D2657B52D0073BCC0 /* Currencies.swift */; };
+		046B37192657C0420073BCC0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B37182657C0410073BCC0 /* Currency.swift */; };
+		046B3721265804370073BCC0 /* CourseGPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3720265804370073BCC0 /* CourseGPB.swift */; };
+		046B3726265808850073BCC0 /* CourseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* CourseAll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		046B36F5265692BD0073BCC0 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
 		046B36FD2656BD2D0073BCC0 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		046B370526570B4F0073BCC0 /* CourseRUB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRUB.swift; sourceTree = "<group>"; };
+		046B370D2657B52D0073BCC0 /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		046B37182657C0410073BCC0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		046B3720265804370073BCC0 /* CourseGPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGPB.swift; sourceTree = "<group>"; };
+		046B3725265808850073BCC0 /* CourseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAll.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,13 +160,17 @@
 			isa = PBXGroup;
 			children = (
 				046B36B52653CF2E0073BCC0 /* ConversionService.swift */,
+				046B37182657C0410073BCC0 /* Currency.swift */,
+				046B3725265808850073BCC0 /* CourseAll.swift */,
 				046B36ED26566C8C0073BCC0 /* CourseUSD.swift */,
+				046B3720265804370073BCC0 /* CourseGPB.swift */,
 				046B370526570B4F0073BCC0 /* CourseRUB.swift */,
 				046B36F5265692BD0073BCC0 /* TranslationService.swift */,
 				046B36FD2656BD2D0073BCC0 /* Translation.swift */,
 				046B36CF2654704B0073BCC0 /* WeatherService.swift */,
 				046B36E826566BB00073BCC0 /* WeatherBis.swift */,
 				046B36E32655B12B0073BCC0 /* testApple.swift */,
+				046B370D2657B52D0073BCC0 /* Currencies.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,9 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				046B36792653288B0073BCC0 /* Main.storyboard */,
-				046B36C826541B950073BCC0 /* ChangeValueViewController.swift */,
-				046B36D9265470D70073BCC0 /* WhatWeatherViewController.swift */,
-				046B36DE26554BEE0073BCC0 /* TranslationViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				046B36772653288B0073BCC0 /* ViewController.swift */,
+				046B36C826541B950073BCC0 /* ChangeValueViewController.swift */,
+				046B36D9265470D70073BCC0 /* WhatWeatherViewController.swift */,
+				046B36DE26554BEE0073BCC0 /* TranslationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,11 +339,15 @@
 				046B36B62653CF2E0073BCC0 /* ConversionService.swift in Sources */,
 				046B36782653288B0073BCC0 /* ViewController.swift in Sources */,
 				046B36742653288B0073BCC0 /* AppDelegate.swift in Sources */,
+				046B37192657C0420073BCC0 /* Currency.swift in Sources */,
 				046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */,
 				046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */,
 				046B36E42655B12C0073BCC0 /* testApple.swift in Sources */,
+				046B3726265808850073BCC0 /* CourseAll.swift in Sources */,
 				046B36E926566BB00073BCC0 /* WeatherBis.swift in Sources */,
 				046B36DF26554BEE0073BCC0 /* TranslationViewController.swift in Sources */,
+				046B370E2657B52D0073BCC0 /* Currencies.swift in Sources */,
+				046B3721265804370073BCC0 /* CourseGPB.swift in Sources */,
 				046B370626570B4F0073BCC0 /* CourseRUB.swift in Sources */,
 				046B36C926541B950073BCC0 /* ChangeValueViewController.swift in Sources */,
 				046B36DA265470D70073BCC0 /* WhatWeatherViewController.swift in Sources */,

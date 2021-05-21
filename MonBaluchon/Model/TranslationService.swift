@@ -9,6 +9,8 @@ import Foundation
 
 class TranslationService {
     
+    
+    
     private static let urlBase = "https://translation.googleapis.com/language/translate/v2?"
     private static let authorization = "&key="
     private static var code = "AIzaSyAyMBiADbjYBlaB7eHcYHYxfg_qJbR4Hjo"
@@ -19,23 +21,21 @@ class TranslationService {
     private static var language = "ru"// Don't change, restricted
     private static var final = "&callback=MY_FUNCTION"
     
-    static func getTranslation() {
-        let url = URL(string: urlBase + askForWord + word + askForLanguage + language + authorization + code)! // + final)!
+    static func getTranslation(text: String,infoBack: @escaping (Bool,String?)->Void) {
+        
+        word = text
+        let stringAdress = urlBase + askForWord + word + askForLanguage + language + authorization + code
+        print(stringAdress)
+        let url = URL(string: stringAdress)!
         print(url)
-        
-        //var request = URLRequest(url: quoteUrl)
         var request = URLRequest(url:url)
-    //    let decoder = JSONDecoder()
-        
-       // let reponse = try? ServerResponse(from: ServerResponse.self as! Decoder)
         request.httpMethod = "POST"
-        //let body = "method=getQuote&lang=en&format=json"
-        let body = ""
-        request.httpBody = body.data(using: .utf8)
+     //  let body = ""
+     //   request.httpBody = body.data(using: .utf8)
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { (data, response, error) in
             print("1")
-            
+            DispatchQueue.main.async {
             //print(data)
             if let dataUnwrapped = data {
                 /*
@@ -51,9 +51,12 @@ class TranslationService {
                     let welcomecourse = try JSONDecoder().decode(WelcomeTranslation.self, from: dataUnwrapped)
                         let wordTranslated = welcomecourse.data.translations[0]
                         print(wordTranslated.translatedText)
+                        infoBack(true,wordTranslated.translatedText)
                     } catch {
                         print("Problème")
+                        infoBack(true,"Error")
                     }
+            }
             }
             /*
             DispatchQueue.main.async {
