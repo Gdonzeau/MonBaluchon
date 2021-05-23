@@ -30,6 +30,8 @@
 		046B37192657C0420073BCC0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B37182657C0410073BCC0 /* Currency.swift */; };
 		046B3721265804370073BCC0 /* CourseGPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3720265804370073BCC0 /* CourseGPB.swift */; };
 		046B3726265808850073BCC0 /* CourseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* CourseAll.swift */; };
+		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
+		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		046B37182657C0410073BCC0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		046B3720265804370073BCC0 /* CourseGPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGPB.swift; sourceTree = "<group>"; };
 		046B3725265808850073BCC0 /* CourseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAll.swift; sourceTree = "<group>"; };
+		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,12 +169,14 @@
 				046B36ED26566C8C0073BCC0 /* CourseUSD.swift */,
 				046B3720265804370073BCC0 /* CourseGPB.swift */,
 				046B370526570B4F0073BCC0 /* CourseRUB.swift */,
+				046B370D2657B52D0073BCC0 /* Currencies.swift */,
+				04A5ACE2265A9ECA0059C5AB /* Languages.swift */,
+				04A5ACE7265AAB9C0059C5AB /* Language.swift */,
 				046B36F5265692BD0073BCC0 /* TranslationService.swift */,
 				046B36FD2656BD2D0073BCC0 /* Translation.swift */,
 				046B36CF2654704B0073BCC0 /* WeatherService.swift */,
 				046B36E826566BB00073BCC0 /* WeatherBis.swift */,
 				046B36E32655B12B0073BCC0 /* testApple.swift */,
-				046B370D2657B52D0073BCC0 /* Currencies.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				046B36EE26566C8C0073BCC0 /* CourseUSD.swift in Sources */,
+				04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */,
 				046B36B62653CF2E0073BCC0 /* ConversionService.swift in Sources */,
 				046B36782653288B0073BCC0 /* ViewController.swift in Sources */,
 				046B36742653288B0073BCC0 /* AppDelegate.swift in Sources */,
@@ -343,6 +350,7 @@
 				046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */,
 				046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */,
 				046B36E42655B12C0073BCC0 /* testApple.swift in Sources */,
+				04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */,
 				046B3726265808850073BCC0 /* CourseAll.swift in Sources */,
 				046B36E926566BB00073BCC0 /* WeatherBis.swift in Sources */,
 				046B36DF26554BEE0073BCC0 /* TranslationViewController.swift in Sources */,

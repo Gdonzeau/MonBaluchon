@@ -9,27 +9,38 @@ import UIKit
 
 class TranslationViewController: UIViewController {
     
+    var language:Language!
+    var languageCode = ""
     @IBOutlet weak var textToTranslate: UITextField!
     @IBOutlet weak var translation: UILabel!
     
+    @IBOutlet weak var languagesPickerView: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var buttonTranslation: UIButton!
     override func viewDidLoad() {
+        toggleActivityIndicator(shown: false)
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+                    activityIndicator.style = .large
+                } else {
+                    activityIndicator.style = .whiteLarge
+                }
         textToTranslate.text = ""
         // Do any additional setup after loading the view.
     }
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         textToTranslate.resignFirstResponder()
     }
+    
     @IBAction func tranlation(_ sender: UIButton) {
+        toggleActivityIndicator(shown: true)
         if let text = textToTranslate.text {
             print(text)
-            if let superNewString = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) { //String(data: text.data(using: .utf8)!, encoding: .windowsCP1250) {
-                //let newString = text.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
-                print(superNewString)
+            if let httpString = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+                print(httpString)
                 textToTranslate.resignFirstResponder()
-                TranslationService.getTranslation(text:superNewString) {
+                chooseLanguage()
+                TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) {
                     (success, result) in
                     self.toggleActivityIndicator(shown: false)
                     if success, let result = result {
@@ -45,6 +56,18 @@ class TranslationViewController: UIViewController {
         }
     }
 }
+extension TranslationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return languagesAvailable.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component: Int)-> String? {
+        return languagesAvailable[row]
+    }
+}
 
 extension TranslationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -54,6 +77,15 @@ extension TranslationViewController: UITextFieldDelegate {
 }
 
 extension TranslationViewController {
+    func chooseLanguage() {
+        let languageIndex = languagesPickerView.selectedRow(inComponent: 1)
+        let languageName = languagesAvailable[languageIndex]
+        language = Language(code: languagesSet[languageName])
+            if let languageChoosen = language.code {
+        languageCode = languageChoosen
+                print("Code: \(languageCode)")
+    }
+    }
     private func toggleActivityIndicator(shown: Bool) {
         buttonTranslation.isHidden = shown
         activityIndicator.isHidden = !shown

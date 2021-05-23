@@ -94,27 +94,6 @@ class ConversionService {
                     }
                 }
             }
-            /*
-             DispatchQueue.main.async {
-             print("2")
-             if let data = data, error == nil {
-             print("3")
-             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-             print("4")
-             if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
-             let text = responseJSON["date"] { //,
-             //let author = responseJSON["rates"] {
-             print("réponse reçue")
-             print(data)
-             print(text)
-             //print(author)
-             } else {
-             print("pas compris")
-             }
-             }
-             }
-             }
-             */
         }
         task.resume()
         

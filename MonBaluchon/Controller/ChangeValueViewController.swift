@@ -16,6 +16,11 @@ class ChangeValueViewController: UIViewController {
     @IBOutlet weak var buttonCurrency: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencyPickerView: UIPickerView!
+    @IBOutlet weak var password: UITextField!
+
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    }
+    
 }
 
 extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -32,10 +37,23 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+                    activityIndicator.style = .large
+                } else {
+                    activityIndicator.style = .whiteLarge
+                }
         toggleActivityIndicator(shown: false)
         // Do any additional setup after loading the view.
     }
 }
+
+extension ChangeValueViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        password.resignFirstResponder()
+        return true
+    }
+}
+
 
 extension ChangeValueViewController {
     @IBAction func getConversion(_ sender: UIButton) {
