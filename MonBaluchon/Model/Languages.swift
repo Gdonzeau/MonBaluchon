@@ -16,7 +16,6 @@ let languagesSet = ["Arabe":"ar",
                     "Russe":"ru",
                     "Anglais":"en",
                     "Chinois":"zh"
-                    
 ]
 
 

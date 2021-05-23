@@ -25,7 +25,7 @@ class TranslationViewController: UIViewController {
                 } else {
                     activityIndicator.style = .whiteLarge
                 }
-        textToTranslate.text = ""
+        textToTranslate.text = "Bonjour"
         // Do any additional setup after loading the view.
     }
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -78,7 +78,7 @@ extension TranslationViewController: UITextFieldDelegate {
 
 extension TranslationViewController {
     func chooseLanguage() {
-        let languageIndex = languagesPickerView.selectedRow(inComponent: 1)
+        let languageIndex = languagesPickerView.selectedRow(inComponent: 0)
         let languageName = languagesAvailable[languageIndex]
         language = Language(code: languagesSet[languageName])
             if let languageChoosen = language.code {

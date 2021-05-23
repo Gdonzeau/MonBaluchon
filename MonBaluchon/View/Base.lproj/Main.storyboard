@@ -17,6 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNs-xi-yBa">
+                                <rect key="frame" x="20" y="394" width="374" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="A3G-bw-kkK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Interprrête"/>
+                                <connections>
+                                    <action selector="tranlation:" destination="seM-3q-SX5" eventType="touchUpInside" id="ege-hg-7vH"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIH-WD-Pz1">
                                 <rect key="frame" x="20" y="74" width="374" height="120"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,51 +58,35 @@
                                 </connections>
                             </textField>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CbZ-DT-0SU">
-                                <rect key="frame" x="188.66666666666666" y="440.66666666666669" width="37" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="CbZ-DT-0SU" secondAttribute="height" multiplier="1:1" id="Ap9-x4-agu"/>
-                                    <constraint firstAttribute="width" constant="37" id="DW8-0d-J3b"/>
-                                </constraints>
+                                <rect key="frame" x="188.66666666666666" y="405.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmS-vS-Ovu">
-                                <rect key="frame" x="100" y="214" width="214" height="160"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="214" width="414" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="ZLg-tw-0Zo"/>
                                 </constraints>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNs-xi-yBa">
-                                <rect key="frame" x="127" y="419" width="160" height="80"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="HNs-xi-yBa" secondAttribute="height" multiplier="2:1" id="6jb-99-GCR"/>
-                                    <constraint firstAttribute="width" constant="160" id="Zb7-yr-z0I"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Traduire">
-                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
                                 <connections>
-                                    <action selector="tranlation:" destination="seM-3q-SX5" eventType="touchUpInside" id="ege-hg-7vH"/>
+                                    <outlet property="dataSource" destination="seM-3q-SX5" id="UiG-7D-e6U"/>
+                                    <outlet property="delegate" destination="seM-3q-SX5" id="C41-zt-2Pq"/>
                                 </connections>
-                            </button>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SyZ-cA-6qA"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="HNs-xi-yBa" firstAttribute="top" secondItem="mmS-vS-Ovu" secondAttribute="bottom" constant="20" id="7r6-a1-nbf"/>
                             <constraint firstItem="mmS-vS-Ovu" firstAttribute="top" secondItem="sIH-WD-Pz1" secondAttribute="bottom" constant="20" id="BOP-fD-9xy"/>
-                            <constraint firstItem="CbZ-DT-0SU" firstAttribute="centerY" secondItem="HNs-xi-yBa" secondAttribute="centerY" id="O7b-do-mvK"/>
+                            <constraint firstItem="CbZ-DT-0SU" firstAttribute="centerY" secondItem="HNs-xi-yBa" secondAttribute="centerY" id="CD1-aN-zeF"/>
+                            <constraint firstItem="SyZ-cA-6qA" firstAttribute="trailing" secondItem="HNs-xi-yBa" secondAttribute="trailing" constant="20" id="NYQ-6F-RXG"/>
                             <constraint firstItem="sIH-WD-Pz1" firstAttribute="top" secondItem="n7c-Xt-dD0" secondAttribute="bottom" constant="20" id="SCk-w6-92W"/>
-                            <constraint firstItem="CbZ-DT-0SU" firstAttribute="centerX" secondItem="HNs-xi-yBa" secondAttribute="centerX" id="WUX-IW-AFU"/>
+                            <constraint firstItem="CbZ-DT-0SU" firstAttribute="centerX" secondItem="HNs-xi-yBa" secondAttribute="centerX" id="T6T-1g-ILh"/>
                             <constraint firstItem="SyZ-cA-6qA" firstAttribute="trailing" secondItem="n7c-Xt-dD0" secondAttribute="trailing" constant="20" id="Wtj-UJ-FWM"/>
+                            <constraint firstItem="mmS-vS-Ovu" firstAttribute="trailing" secondItem="SyZ-cA-6qA" secondAttribute="trailing" id="egQ-Cj-Bnm"/>
+                            <constraint firstItem="HNs-xi-yBa" firstAttribute="leading" secondItem="SyZ-cA-6qA" secondAttribute="leading" constant="20" id="fTY-xL-XX8"/>
                             <constraint firstItem="n7c-Xt-dD0" firstAttribute="leading" secondItem="SyZ-cA-6qA" secondAttribute="leading" constant="20" id="gWb-bw-M7V"/>
-                            <constraint firstItem="SyZ-cA-6qA" firstAttribute="trailing" secondItem="mmS-vS-Ovu" secondAttribute="trailing" constant="100" id="gbl-Q8-EmU"/>
-                            <constraint firstItem="mmS-vS-Ovu" firstAttribute="leading" secondItem="SyZ-cA-6qA" secondAttribute="leading" constant="100" id="lOH-DH-qZG"/>
                             <constraint firstItem="n7c-Xt-dD0" firstAttribute="top" secondItem="SyZ-cA-6qA" secondAttribute="top" constant="20" id="llY-RM-4Nf"/>
-                            <constraint firstItem="HNs-xi-yBa" firstAttribute="top" secondItem="mmS-vS-Ovu" secondAttribute="bottom" constant="45" id="pFO-Xs-Ced"/>
-                            <constraint firstItem="CbZ-DT-0SU" firstAttribute="centerX" secondItem="Kv0-Or-fsi" secondAttribute="centerX" id="pwl-Rb-JZf"/>
+                            <constraint firstItem="mmS-vS-Ovu" firstAttribute="leading" secondItem="SyZ-cA-6qA" secondAttribute="leading" id="phb-Qu-mXB"/>
                             <constraint firstItem="sIH-WD-Pz1" firstAttribute="leading" secondItem="SyZ-cA-6qA" secondAttribute="leading" constant="20" id="rAL-Md-mEq"/>
                             <constraint firstItem="HNs-xi-yBa" firstAttribute="centerX" secondItem="Kv0-Or-fsi" secondAttribute="centerX" id="x3m-TR-Crz"/>
                             <constraint firstItem="SyZ-cA-6qA" firstAttribute="trailing" secondItem="sIH-WD-Pz1" secondAttribute="trailing" constant="20" id="xE8-j0-Q3i"/>
@@ -103,7 +99,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="CbZ-DT-0SU" id="l1r-VO-gl2"/>
                         <outlet property="buttonTranslation" destination="HNs-xi-yBa" id="dik-ck-JTA"/>
-                        <outlet property="languagesPickerView" destination="mmS-vS-Ovu" id="vWd-t6-0PQ"/>
+                        <outlet property="languagesPickerView" destination="mmS-vS-Ovu" id="RIU-0o-nIr"/>
                         <outlet property="textToTranslate" destination="n7c-Xt-dD0" id="BJh-S2-4Lq"/>
                         <outlet property="translation" destination="sIH-WD-Pz1" id="na0-0E-gk7"/>
                     </connections>
