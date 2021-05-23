@@ -23,12 +23,10 @@ struct WelcomeCourseUSD: Codable {
 // MARK: - Rates
 
 struct RatesUSD: Codable {
-   // var rub: Double
     var usd: Double
     
 
     enum CodingKeys: String, CodingKey {
-       // case rub = "RUB"
         case usd = "USD"
     }
     

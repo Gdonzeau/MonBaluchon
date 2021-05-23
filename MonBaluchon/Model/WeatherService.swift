@@ -21,7 +21,7 @@ class WeatherService {
     private static var place = "q="
     private static var city = "Paris"
     
-    
+    private var task:URLSessionDataTask?
     
     func getWeather(town:String,infoBack: @escaping (Bool,[Any?])-> Void) {
         WeatherService.city = town
@@ -29,21 +29,18 @@ class WeatherService {
         print(url)
         
         var request = URLRequest(url: url)
-        //var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let body = "method=getQuote&lang=en&format=json"
         request.httpBody = body.data(using: .utf8)
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            print("1")
+        task?.cancel()
+        task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 if let dataUnwrapped = data {
-                    
                     do {
                         let welcomeweather = try JSONDecoder().decode(WelcomeWeather.self, from: dataUnwrapped)
                         print(welcomeweather)
                         let iconUrl = URL(string:"http://openweathermap.org/img/w/\(welcomeweather.weather[0].icon).png")!
-                        //longitude, latitude, vitesseVent, provenance du vent, nomVille,température,ressenti,tempsmin, tempsmax,pressure, humidity, temps
                         let weatherInTown = [welcomeweather.coord.lon, //0
                                              welcomeweather.coord.lat,
                                              welcomeweather.wind.speed,
@@ -61,20 +58,16 @@ class WeatherService {
                                              welcomeweather.weather[0].main,
                                              welcomeweather.weather[0].icon,//15
                                              welcomeweather.weather[0].id,
-                        iconUrl] as [Any]
+                                             iconUrl] as [Any]
                         print (weatherInTown)
-                       // print(welcomeweather.wind.speed)
-                       // print(welcomeweather.wind.deg)
                         infoBack(true,weatherInTown)
                     } catch {
                         print("Problème")
+                      //  infoBack(false,weatherInTown) // Gérer le cas d'erreur
                     }
                 }
             }
-            
         }
-        task.resume()
-        
-        print("Demande")
+        task?.resume()
     }
 }

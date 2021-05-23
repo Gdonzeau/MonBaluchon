@@ -25,7 +25,7 @@ class TranslationViewController: UIViewController {
                 } else {
                     activityIndicator.style = .whiteLarge
                 }
-        textToTranslate.text = "Bonjour"
+        textToTranslate.text = ""
         // Do any additional setup after loading the view.
     }
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -35,6 +35,10 @@ class TranslationViewController: UIViewController {
     @IBAction func tranlation(_ sender: UIButton) {
         toggleActivityIndicator(shown: true)
         if let text = textToTranslate.text {
+            guard text != "" else {
+                nothingWrittenAlert()
+                return
+            }
             print(text)
             if let httpString = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
                 print(httpString)

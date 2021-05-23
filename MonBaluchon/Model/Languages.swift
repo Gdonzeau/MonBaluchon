@@ -8,14 +8,16 @@
 import Foundation
 
 let languagesAvailable = ["Arabe",
-                          "Russe",
                           "Anglais",
+                          "Russe",
+                          "Espagnol",
                           "Chinois"
 ]
 let languagesSet = ["Arabe":"ar",
                     "Russe":"ru",
                     "Anglais":"en",
-                    "Chinois":"zh"
+                    "Chinois":"zh",
+                    "Espagnol":"es"
 ]
 
 

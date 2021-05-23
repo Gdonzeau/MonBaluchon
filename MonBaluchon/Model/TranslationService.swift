@@ -21,12 +21,14 @@ class TranslationService {
     private static var language = "ru"// Don't change, restricted
     private static var final = "&callback=MY_FUNCTION"
     
+    private var task:URLSessionDataTask?
+    
     func getTranslation(toLanguage:String, text: String,infoBack: @escaping (Bool,String?)->Void) {
         guard toLanguage != "" else {
             print("pas de texte")
             return
         }
-        print("Ok pour le moment1")
+
         TranslationService.word = text
         let stringAdress = TranslationService.urlBase + TranslationService.askForWord + TranslationService.word + TranslationService.askForLanguage + toLanguage + TranslationService.authorization + TranslationService.code
         print(stringAdress)
@@ -34,15 +36,11 @@ class TranslationService {
         print(url)
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
-        //  let body = ""
-        //   request.httpBody = body.data(using: .utf8)
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            print("1")
+        task?.cancel()
+        task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
-                //print(data)
                 if let dataUnwrapped = data {
-                    
                     do {
                         let welcometranslation = try JSONDecoder().decode(WelcomeTranslation.self, from: dataUnwrapped)
                         let wordTranslated = welcometranslation.data.translations[0]
@@ -55,10 +53,6 @@ class TranslationService {
                 }
             }
         }
-        task.resume()
-        
-        print("Demande")
+        task?.resume()
     }
-    
-    
 }

@@ -21,31 +21,20 @@ class ConversionService {
     private static var final = "&callback=MY_FUNCTION"
     static var dicoDevises = ["USD":"usd","RUB":"rub"]
     
-    func getConversion(currencyName:String,infoBack: @escaping (Bool,String?,String?)->Void) {
+    private var task:URLSessionDataTask?
+    
+    func getConversion(currencyName:String,infoBack: @escaping (Bool,String?,String?,Double?)->Void) {
         ConversionService.value = currencyName
-        let url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code + ConversionService.symbol + ConversionService.value)! // + base + valueBase)! // + final)!
-        //print(url)
-        
-        //var request = URLRequest(url: quoteUrl)
+        let url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code + ConversionService.symbol + ConversionService.value)!
         var request = URLRequest(url:url)
-        //let decoder = JSONDecoder()
-        
-        // let reponse = try? ServerResponse(from: ServerResponse.self as! Decoder)
         request.httpMethod = "POST"
         let body = "method=getQuote&lang=en&format=json"
         request.httpBody = body.data(using: .utf8)
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { (data, response, error) in
+        task?.cancel()
+        task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 if let dataUnwrapped = data {
-                    if let result2 = String( data: dataUnwrapped , encoding: .utf8) {
-                        print("Reçu : \(result2)") // To delete ?
-                        let json = """
-                    \(result2)
-                    """.data(using: .utf8)!
-                        print(String( data: json , encoding: .utf8) ?? "Rien")
-                    }
-                    // end of to delete ?
                     do {
                         switch ConversionService.value {
                         case "USD" :
@@ -58,8 +47,9 @@ class ConversionService {
                             //   print(welcomecourse.rates.rub)
                             let result = "Le \(welcomecourse.date), 1 \(welcomecourse.base) vaut \(welcomecourse.rates.usd) \(ConversionService.value)"
                             let result2 = "et 1 \(ConversionService.value) vaut \(1/welcomecourse.rates.usd) \(welcomecourse.base)."
+                            let valueOfChange = welcomecourse.rates.usd
                             print(result)
-                            infoBack(true,result,result2)
+                            infoBack(true,result,result2,valueOfChange)
                         case "GBP" :
                             let welcomecourse = try JSONDecoder().decode(WelcomeCourseGBP.self, from: dataUnwrapped)
                             print(welcomecourse.success)
@@ -70,8 +60,9 @@ class ConversionService {
                             //   print(welcomecourse.rates.rub)
                             let result = "Le \(welcomecourse.date), 1 \(welcomecourse.base) vaut \(welcomecourse.rates.gbp) \(ConversionService.value)"
                             let result2 = "et 1 \(ConversionService.value) vaut \(1/welcomecourse.rates.gbp) \(welcomecourse.base)."
+                            let valueOfChange = welcomecourse.rates.gbp
                             print(result)
-                            infoBack(true,result,result2)
+                            infoBack(true,result,result2,valueOfChange)
                         case "RUB" :
                             let welcomecourse = try JSONDecoder().decode(WelcomeCourseRUB.self, from: dataUnwrapped)
                             print(welcomecourse.success)
@@ -82,20 +73,21 @@ class ConversionService {
                             //   print(welcomecourse.rates.rub)
                             let result = "Le \(welcomecourse.date), 1 \(welcomecourse.base) vaut \(welcomecourse.rates.rub) \(ConversionService.value)"
                             let result2 = "et 1 \(ConversionService.value) vaut \(1/welcomecourse.rates.rub) \(welcomecourse.base)."
+                            let valueOfChange = welcomecourse.rates.rub
                             print(result)
-                            infoBack(true,result,result2)
+                            infoBack(true,result,result2,valueOfChange)
                         default :
                             print("Erreur")
-                            infoBack(false,"Error","")
+                            infoBack(false,"Error","",0)
                         }
                     } catch {
                         print("Problème")
-                        infoBack(false,"Error","")
+                        infoBack(false,"Error","",0)
                     }
                 }
             }
         }
-        task.resume()
+        task?.resume()
         
         print("Demande")
     }

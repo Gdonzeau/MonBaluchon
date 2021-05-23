@@ -32,6 +32,7 @@
 		046B3726265808850073BCC0 /* CourseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* CourseAll.swift */; };
 		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
 		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
+		04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		046B3725265808850073BCC0 /* CourseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAll.swift; sourceTree = "<group>"; };
 		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGesture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				046B36C826541B950073BCC0 /* ChangeValueViewController.swift */,
 				046B36D9265470D70073BCC0 /* WhatWeatherViewController.swift */,
 				046B36DE26554BEE0073BCC0 /* TranslationViewController.swift */,
+				04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 			files = (
 				046B36EE26566C8C0073BCC0 /* CourseUSD.swift in Sources */,
 				04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */,
+				04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */,
 				046B36B62653CF2E0073BCC0 /* ConversionService.swift in Sources */,
 				046B36782653288B0073BCC0 /* ViewController.swift in Sources */,
 				046B36742653288B0073BCC0 /* AppDelegate.swift in Sources */,
