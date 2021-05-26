@@ -36,6 +36,10 @@ class WeatherService {
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    infoBack(false, [])
+                    return
+                }
                 if let dataUnwrapped = data {
                     do {
                         let welcomeweather = try JSONDecoder().decode(WelcomeWeather.self, from: dataUnwrapped)

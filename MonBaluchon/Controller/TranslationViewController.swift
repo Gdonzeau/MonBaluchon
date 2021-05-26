@@ -44,7 +44,7 @@ class TranslationViewController: UIViewController {
                 print(httpString)
                 textToTranslate.resignFirstResponder()
                 chooseLanguage()
-                TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) {
+                TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) { // text au lieu de httpString
                     (success, result) in
                     self.toggleActivityIndicator(shown: false)
                     if success, let result = result {

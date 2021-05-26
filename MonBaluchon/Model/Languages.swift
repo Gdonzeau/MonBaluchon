@@ -13,6 +13,7 @@ let languagesAvailable = ["Arabe",
                           "Espagnol",
                           "Chinois"
 ]
+// Language : ["Name":"codeid"]
 let languagesSet = ["Arabe":"ar",
                     "Russe":"ru",
                     "Anglais":"en",

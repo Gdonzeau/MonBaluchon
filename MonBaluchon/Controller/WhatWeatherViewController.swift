@@ -14,6 +14,7 @@ class WhatWeatherViewController: UIViewController {
     @IBOutlet weak var showWeather: UILabel!
     @IBOutlet weak var getWeather: UIButton!
     @IBOutlet weak var map: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         toggleActivityIndicator(shown: false)

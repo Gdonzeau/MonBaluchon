@@ -11,17 +11,18 @@ class ChangeValueViewController: UIViewController {
     
     var currency:Currency!
     
-    @IBOutlet weak var result: UILabel!
-    @IBOutlet weak var reverse: UILabel!
+    //@IBOutlet weak var result: UILabel! // To get
+    //@IBOutlet weak var reverse: UILabel!
     @IBOutlet weak var buttonCurrency: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencyPickerView: UIPickerView!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var LabelCurrency: UILabel!
+    //@IBOutlet weak var password: UITextField!
+    @IBOutlet weak var labelCurrency: UILabel!
     @IBOutlet weak var sumEURToConvert: UITextField!
     @IBOutlet weak var resultOfConversion: UITextField!
+    @IBOutlet weak var course: UILabel!
     
-    @IBAction func customGesture(_ sender: UIGestureRecognizer) {
+    @IBAction func customGesture(_ sender: UIGestureRecognizer) { // Let's try to acutalize LabelCurrency instantly. For the moment doesn't work
         switch sender.state {
         case .began, .changed:
             print("rien")
@@ -29,16 +30,15 @@ class ChangeValueViewController: UIViewController {
             let currencyIndex = currencyPickerView.selectedRow(inComponent: 0)
             let currencyName = currenciesAvailable[currencyIndex]
             currency = Currency(name: currencyName)
-            LabelCurrency.text = currency.name
+            labelCurrency.text = currency.name
         default:
             break
         }
     }
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        password.resignFirstResponder()
+        //password.resignFirstResponder()
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
-        
     }
 }
 
@@ -68,7 +68,7 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
 
 extension ChangeValueViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        password.resignFirstResponder()
+        //password.resignFirstResponder()
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
         return true
@@ -78,7 +78,7 @@ extension ChangeValueViewController: UITextFieldDelegate {
 
 extension ChangeValueViewController {
     @IBAction func getConversion(_ sender: UIButton) {
-        password.resignFirstResponder()
+        //password.resignFirstResponder()
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
         toggleActivityIndicator(shown: true)
@@ -95,30 +95,41 @@ extension ChangeValueViewController {
         }
     }
     
-    func createCurrency() {
+    private func createCurrency() {
         let currencyIndex = currencyPickerView.selectedRow(inComponent: 0)
         let currencyName = currenciesAvailable[currencyIndex]
         currency = Currency(name: currencyName)
-        LabelCurrency.text = currency.name
+        labelCurrency.text = currency.name
     }
     private func toggleActivityIndicator(shown: Bool) {
         buttonCurrency.isHidden = shown
         activityIndicator.isHidden = !shown
     }
     private func update(valueCurrency: String, inverse: String, valueOfChange: Double) {
-        result.text = valueCurrency
-        reverse.text = inverse
+        //result.text = valueCurrency
+        //reverse.text = inverse
+        var newCorrectionText = ""
+        course.text = String(format: "%.2f", valueOfChange)
+        
         if sumEURToConvert.text != "" {
-            
-            if let eurToConvert = Double(sumEURToConvert.text!) {
-                resultOfConversion.text = String(format: "%.2f",eurToConvert * valueOfChange)
+            if let correctionText = sumEURToConvert.text {
+                newCorrectionText = correctionText.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil) // No keyboard found with . so we change , into . to avoid error
+                sumEURToConvert.text = newCorrectionText
+            }
+            if let eurToConvert = Double(newCorrectionText) {
+                resultOfConversion.text = String(format: "%.2f",eurToConvert * valueOfChange)// 2 digits after the point
             } else {
                 sumEURToConvert.text = "0"
             }
             
         } else if resultOfConversion.text != "" {
-            if let curToConvert = Double(resultOfConversion.text!) {
-                sumEURToConvert.text = String(format: "%.2f",curToConvert / valueOfChange)
+            if let correctionText = resultOfConversion.text {
+                newCorrectionText = correctionText.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil) // No keyboard found with . so we change , into . to avoid error
+                resultOfConversion.text = newCorrectionText
+            }
+            
+            if let curToConvert = Double(newCorrectionText) {
+                sumEURToConvert.text = String(format: "%.2f",curToConvert / valueOfChange)// 2 digits after the point
             } else {
                 resultOfConversion.text = "0"
             }
