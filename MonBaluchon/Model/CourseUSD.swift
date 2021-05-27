@@ -16,7 +16,8 @@ import Foundation
 struct WelcomeCourseUSD: Codable {
     var success: Bool
     var timestamp: Int
-    var base, date: String
+    var base: String
+    var date: String
     var rates: RatesUSD
 }
 
