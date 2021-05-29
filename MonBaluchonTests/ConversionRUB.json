@@ -1,0 +1,9 @@
+{
+    "success": true,
+    "timestamp": 1622214424,
+    "base": "EUR",
+    "date": "2021-05-28",
+    "rates": {
+        "RUB": 89.282326
+    }
+}

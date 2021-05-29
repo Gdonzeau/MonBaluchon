@@ -83,11 +83,14 @@ extension ChangeValueViewController {
         resultOfConversion.resignFirstResponder()
         toggleActivityIndicator(shown: true)
         createCurrency()
-        ConversionService.shared.getConversion(currencyName:currency.name!) { (success, result, result2,valueOfChange) in
+       // ConversionService.shared.getConversion(currencyName:currency.name!) { (success, result, result2,valueOfChange) in
+            ConversionService.shared.getConversion(currencyName:currency.name!) { (success, valueOfChange) in
             self.toggleActivityIndicator(shown: false)
-            if success, let result = result, let result2 = result2, let valueOfChange = valueOfChange {
+           // if success, let result = result, let result2 = result2, let valueOfChange = valueOfChange {
+                if success,  let valueOfChange = valueOfChange {
                 // show result
-                self.update(valueCurrency: result, inverse: result2, valueOfChange: valueOfChange)
+               // self.update(valueCurrency: result, inverse: result2, valueOfChange: valueOfChange)
+                    self.update(valueOfChange: valueOfChange)
             } else {
                 // print error
                 self.presentAlert()
@@ -105,7 +108,8 @@ extension ChangeValueViewController {
         buttonCurrency.isHidden = shown
         activityIndicator.isHidden = !shown
     }
-    private func update(valueCurrency: String, inverse: String, valueOfChange: Double) {
+    //private func update(valueCurrency: String, inverse: String, valueOfChange: Double) {
+        private func update(valueOfChange: Double) {
         //result.text = valueCurrency
         //reverse.text = inverse
         var newCorrectionText = ""

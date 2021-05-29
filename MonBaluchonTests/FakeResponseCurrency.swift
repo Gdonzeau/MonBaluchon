@@ -7,16 +7,28 @@
 
 import Foundation
 
-class FakeResponseCurrency {
+class FakeResponseCurrencyRUB {
     
     static var quoteCorrectData: Data? {
-        let bundle = Bundle(for: FakeResponseCurrency.self)
-        let url = bundle.url(forResource: "Conversion", withExtension: "json")!
+        let bundle = Bundle(for: FakeResponseCurrencyRUB.self)
+        let url = bundle.url(forResource: "ConversionRUB", withExtension: "json")!
         return try! Data(contentsOf: url)
     }
-
+    
     static let quoteIncorrectData = "erreur".data(using: .utf8)!
     
+    // MARK: - Response
+    static let responseOK = HTTPURLResponse(
+        url: URL(string: "https://openclassrooms.com")!,
+        statusCode: 200, httpVersion: nil, headerFields: [:])!
+
+    static let responseKO = HTTPURLResponse(
+        url: URL(string: "https://openclassrooms.com")!,
+        statusCode: 500, httpVersion: nil, headerFields: [:])!
+
+
+    
+    // MARK: - Error
     class QuoteError: Error {}
     static let error = QuoteError()
 }

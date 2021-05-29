@@ -33,8 +33,9 @@
 		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
 		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
 		04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */; };
-		04EDF67A2660527A00004FEC /* Conversion.json in Resources */ = {isa = PBXBuildFile; fileRef = 04EDF6792660527A00004FEC /* Conversion.json */; };
+		04EDF67A2660527A00004FEC /* ConversionRUB.json in Resources */ = {isa = PBXBuildFile; fileRef = 04EDF6792660527A00004FEC /* ConversionRUB.json */; };
 		04EDF6822660556700004FEC /* FakeResponseCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDF6812660556700004FEC /* FakeResponseCurrency.swift */; };
+		04EDF68A266195F200004FEC /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDF689266195F200004FEC /* URLSessionFake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,8 +88,9 @@
 		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGesture.swift; sourceTree = "<group>"; };
-		04EDF6792660527A00004FEC /* Conversion.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Conversion.json; sourceTree = "<group>"; };
+		04EDF6792660527A00004FEC /* ConversionRUB.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ConversionRUB.json; sourceTree = "<group>"; };
 		04EDF6812660556700004FEC /* FakeResponseCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseCurrency.swift; sourceTree = "<group>"; };
+		04EDF689266195F200004FEC /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				046B368A2653288F0073BCC0 /* MonBaluchonTests.swift */,
-				04EDF6792660527A00004FEC /* Conversion.json */,
+				04EDF6792660527A00004FEC /* ConversionRUB.json */,
 				04EDF6812660556700004FEC /* FakeResponseCurrency.swift */,
+				04EDF689266195F200004FEC /* URLSessionFake.swift */,
 				046B368C2653288F0073BCC0 /* Info.plist */,
 			);
 			path = MonBaluchonTests;
@@ -333,7 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04EDF67A2660527A00004FEC /* Conversion.json in Resources */,
+				04EDF67A2660527A00004FEC /* ConversionRUB.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EDF6822660556700004FEC /* FakeResponseCurrency.swift in Sources */,
+				04EDF68A266195F200004FEC /* URLSessionFake.swift in Sources */,
 				046B368B2653288F0073BCC0 /* MonBaluchonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -533,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

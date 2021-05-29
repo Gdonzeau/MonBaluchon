@@ -353,6 +353,7 @@
                         <outlet property="buttonCurrency" destination="g4K-iw-UwO" id="a87-05-rnT"/>
                         <outlet property="course" destination="sZt-Qm-l1b" id="Cu5-Ts-TU3"/>
                         <outlet property="currencyPickerView" destination="uxw-IY-9cu" id="H2y-hH-OGs"/>
+                        <outlet property="labelCurrency" destination="3PT-V0-Z1w" id="ebo-Qo-wr7"/>
                         <outlet property="resultOfConversion" destination="PRw-zp-D7W" id="5rQ-gO-TDT"/>
                         <outlet property="sumEURToConvert" destination="PnA-Zx-Bod" id="zDt-Eq-OC4"/>
                     </connections>
