@@ -9,10 +9,11 @@ import Foundation
 
 class FakeResponseCurrencyRUB {
     
-    static var quoteCorrectData: Data? {
+    static var quoteCorrectData: Data {
         let bundle = Bundle(for: FakeResponseCurrencyRUB.self)
         let url = bundle.url(forResource: "ConversionRUB", withExtension: "json")!
-        return try! Data(contentsOf: url)
+        let data = try! Data(contentsOf: url)
+        return data
     }
     
     static let quoteIncorrectData = "erreur".data(using: .utf8)!

@@ -9,5 +9,6 @@ import Foundation
 
 let currenciesAvailable = ["USD",
                            "RUB",
-                           "GBP"
+                           "GBP",
+                           "BIF"
 ]

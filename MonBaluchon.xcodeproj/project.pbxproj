@@ -30,6 +30,7 @@
 		046B37192657C0420073BCC0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B37182657C0410073BCC0 /* Currency.swift */; };
 		046B3721265804370073BCC0 /* CourseGPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3720265804370073BCC0 /* CourseGPB.swift */; };
 		046B3726265808850073BCC0 /* CourseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* CourseAll.swift */; };
+		047FAA662666C6DC00C477F4 /* API_Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA652666C6DC00C477F4 /* API_Errors.swift */; };
 		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
 		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
 		04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */; };
@@ -85,6 +86,7 @@
 		046B37182657C0410073BCC0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		046B3720265804370073BCC0 /* CourseGPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGPB.swift; sourceTree = "<group>"; };
 		046B3725265808850073BCC0 /* CourseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAll.swift; sourceTree = "<group>"; };
+		047FAA652666C6DC00C477F4 /* API_Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Errors.swift; sourceTree = "<group>"; };
 		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGesture.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				046B36AC265329160073BCC0 /* OtherFiles */,
+				047FAA612665961F00C477F4 /* Services */,
 				046B36A6265328C30073BCC0 /* Model */,
 				046B36A8265328E40073BCC0 /* Controller */,
 				046B36A7265328DF0073BCC0 /* View */,
@@ -174,7 +177,6 @@
 		046B36A6265328C30073BCC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				046B36B52653CF2E0073BCC0 /* ConversionService.swift */,
 				046B37182657C0410073BCC0 /* Currency.swift */,
 				046B3725265808850073BCC0 /* CourseAll.swift */,
 				046B36ED26566C8C0073BCC0 /* CourseUSD.swift */,
@@ -183,11 +185,10 @@
 				046B370D2657B52D0073BCC0 /* Currencies.swift */,
 				04A5ACE2265A9ECA0059C5AB /* Languages.swift */,
 				04A5ACE7265AAB9C0059C5AB /* Language.swift */,
-				046B36F5265692BD0073BCC0 /* TranslationService.swift */,
 				046B36FD2656BD2D0073BCC0 /* Translation.swift */,
-				046B36CF2654704B0073BCC0 /* WeatherService.swift */,
 				046B36E826566BB00073BCC0 /* Weather.swift */,
 				046B36E32655B12B0073BCC0 /* testApple.swift */,
+				047FAA652666C6DC00C477F4 /* API_Errors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +222,16 @@
 				046B367E2653288F0073BCC0 /* LaunchScreen.storyboard */,
 			);
 			path = OtherFiles;
+			sourceTree = "<group>";
+		};
+		047FAA612665961F00C477F4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				046B36B52653CF2E0073BCC0 /* ConversionService.swift */,
+				046B36F5265692BD0073BCC0 /* TranslationService.swift */,
+				046B36CF2654704B0073BCC0 /* WeatherService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +374,7 @@
 				046B37192657C0420073BCC0 /* Currency.swift in Sources */,
 				046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */,
 				046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */,
+				047FAA662666C6DC00C477F4 /* API_Errors.swift in Sources */,
 				046B36E42655B12C0073BCC0 /* testApple.swift in Sources */,
 				04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */,
 				046B3726265808850073BCC0 /* CourseAll.swift in Sources */,

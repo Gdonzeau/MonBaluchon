@@ -13,7 +13,7 @@
 import Foundation
 
 // MARK: - Welcome
-struct Welcome: Codable {
+struct RatesOnLine: Codable {
     let success: Bool
     let timestamp: Int
     let base, date: String

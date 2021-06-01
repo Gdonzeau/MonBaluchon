@@ -51,6 +51,7 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         return currenciesAvailable.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component: Int)-> String? {
+        labelCurrency.text = currenciesAvailable[row]
         return currenciesAvailable[row]
     }
     
@@ -73,27 +74,34 @@ extension ChangeValueViewController: UITextFieldDelegate {
         resultOfConversion.resignFirstResponder()
         return true
     }
+    func textFieldDidBeginEditing(_ textField: UITextField) { // to reset TextFields
+        sumEURToConvert.text = ""
+        resultOfConversion.text = ""
+    }
 }
 
 
 extension ChangeValueViewController {
     @IBAction func getConversion(_ sender: UIButton) {
-        //password.resignFirstResponder()
+        conversion()
+    }
+    
+    func conversion() {
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
         toggleActivityIndicator(shown: true)
         createCurrency()
-       // ConversionService.shared.getConversion(currencyName:currency.name!) { (success, result, result2,valueOfChange) in
-            ConversionService.shared.getConversion(currencyName:currency.name!) { (success, valueOfChange) in
+        
+      //  ConversionService.shared.getConversion(currencyName:currency.name!) { (success, valueOfChange) in
+        ConversionService.shared.getConversion(currencyName:currency.name!) { result in
             self.toggleActivityIndicator(shown: false)
-           // if success, let result = result, let result2 = result2, let valueOfChange = valueOfChange {
-                if success,  let valueOfChange = valueOfChange {
-                // show result
-               // self.update(valueCurrency: result, inverse: result2, valueOfChange: valueOfChange)
-                    self.update(valueOfChange: valueOfChange)
-            } else {
-                // print error
-                self.presentAlert()
+            switch result {
+            
+            case.success(let valueOfChange):
+            self.update(valueOfChange: valueOfChange)
+                
+            case.failure(let error):
+            print(error)
             }
         }
     }
@@ -102,16 +110,14 @@ extension ChangeValueViewController {
         let currencyIndex = currencyPickerView.selectedRow(inComponent: 0)
         let currencyName = currenciesAvailable[currencyIndex]
         currency = Currency(name: currencyName)
-        labelCurrency.text = currency.name
+        //labelCurrency.text = currencyName
+        //labelCurrency.text = currency.name
     }
     private func toggleActivityIndicator(shown: Bool) {
         buttonCurrency.isHidden = shown
         activityIndicator.isHidden = !shown
     }
-    //private func update(valueCurrency: String, inverse: String, valueOfChange: Double) {
-        private func update(valueOfChange: Double) {
-        //result.text = valueCurrency
-        //reverse.text = inverse
+    private func update(valueOfChange: Double) {
         var newCorrectionText = ""
         course.text = String(format: "%.2f", valueOfChange)
         
@@ -141,7 +147,7 @@ extension ChangeValueViewController {
     }
     
     private func presentAlert() {
-        let alertVC = UIAlertController(title: "Error", message: "The quote download failed", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Error", message: "The quote download failed", preferredStyle: .alert) // message : error.rawValue
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC,animated: true,completion: nil)
     }
