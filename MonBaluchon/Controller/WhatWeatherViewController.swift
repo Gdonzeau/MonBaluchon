@@ -46,7 +46,7 @@ class WhatWeatherViewController: UIViewController {
                     self.update(result: descriptionWeather, iconUrl: iconUrl as! URL)
                 } else {
                     // print error
-                    self.presentAlert()
+                    self.allErrors(errorMessage: "The quote download failed")
                 }
             }
         } else {
@@ -91,19 +91,9 @@ extension WhatWeatherViewController {
         getWeather.isHidden = shown
         activityIndicator.isHidden = !shown
     }
-    private func nothingWrittenAlert() {
-        let alertVC = UIAlertController(title: "Error", message: "You must write something", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alertVC,animated: true,completion: nil)
-    }
     private func update(result: String, iconUrl:URL) {
         showWeather.text = result
         map.load(url: iconUrl)
-    }
-    private func presentAlert() {
-        let alertVC = UIAlertController(title: "Error", message: "The quote download failed", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alertVC,animated: true,completion: nil)
     }
     private func allErrors(errorMessage: String) {
         let alertVC = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)

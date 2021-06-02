@@ -5,15 +5,10 @@
 //  Created by Guillaume Donzeau on 20/05/2021.
 //
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let welcomeweather = try? newJSONDecoder().decode(WelcomeWeather.self, from: jsonData)
-
 import Foundation
 
 // MARK: - Welcome
-struct WelcomeWeather: Codable {
+struct WeatherReturned: Codable {
     let coord: Coord
     let weather: [Weather]
     let base: String
@@ -23,7 +18,8 @@ struct WelcomeWeather: Codable {
     let clouds: Clouds
     let dt: Int
     let sys: Sys
-    let timezone, id: Int
+    let timezone: Int
+    let id: Int
     let name: String
     let cod: Int
 }
@@ -35,36 +31,45 @@ struct Clouds: Codable {
 
 // MARK: - Coord
 struct Coord: Codable {
-    let lon, lat: Double
+    let lon: Double
+    let lat: Double
 }
 
 // MARK: - Main
 struct Main: Codable {
-    let temp, feelsLike, tempMin, tempMax: Double
-    let pressure, humidity: Int
-
+    let temp: Double
+    let feelsLike: Double
+    let tempMin: Double
+    let tempMax: Double
+    let pressure: Int
+    let humidity: Int
+    
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"
         case tempMin = "temp_min"
         case tempMax = "temp_max"
-        case pressure, humidity
+        case pressure
+        case humidity
     }
 }
 
 // MARK: - Sys
 struct Sys: Codable {
-    let type, id: Int
+    let type: Int
+    let id: Int
     let country: String
-    let sunrise, sunset: Int
+    let sunrise: Int
+    let sunset: Int
 }
 
 // MARK: - Weather
 struct Weather: Codable {
     let id: Int
-    let weatherDescription, icon: String // main
+    let weatherDescription: String
+    let icon: String // main
     let main:String
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case main = "main"

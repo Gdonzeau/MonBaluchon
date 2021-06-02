@@ -31,6 +31,7 @@
 		046B3721265804370073BCC0 /* CourseGPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3720265804370073BCC0 /* CourseGPB.swift */; };
 		046B3726265808850073BCC0 /* CourseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* CourseAll.swift */; };
 		047FAA662666C6DC00C477F4 /* API_Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA652666C6DC00C477F4 /* API_Errors.swift */; };
+		047FAA6B2667956B00C477F4 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA6A2667956B00C477F4 /* APIKeys.swift */; };
 		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
 		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
 		04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */; };
@@ -87,6 +88,7 @@
 		046B3720265804370073BCC0 /* CourseGPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGPB.swift; sourceTree = "<group>"; };
 		046B3725265808850073BCC0 /* CourseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAll.swift; sourceTree = "<group>"; };
 		047FAA652666C6DC00C477F4 /* API_Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Errors.swift; sourceTree = "<group>"; };
+		047FAA6A2667956B00C477F4 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGesture.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				046B36752653288B0073BCC0 /* SceneDelegate.swift */,
 				046B367C2653288F0073BCC0 /* Assets.xcassets */,
 				046B367E2653288F0073BCC0 /* LaunchScreen.storyboard */,
+				047FAA6A2667956B00C477F4 /* APIKeys.swift */,
 			);
 			path = OtherFiles;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */,
 				046B36B62653CF2E0073BCC0 /* ConversionService.swift in Sources */,
 				046B36782653288B0073BCC0 /* ViewController.swift in Sources */,
+				047FAA6B2667956B00C477F4 /* APIKeys.swift in Sources */,
 				046B36742653288B0073BCC0 /* AppDelegate.swift in Sources */,
 				046B37192657C0420073BCC0 /* Currency.swift in Sources */,
 				046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */,

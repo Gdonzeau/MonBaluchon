@@ -17,7 +17,7 @@ class WeatherService {
     private static let urlBase2 = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Paris&appid=4fbc06f6ef2234b97dcf057bc1f96928")!
     private static let urlBase = "http://api.openweathermap.org/data/2.5/weather?"
     private static let authorization = "&appid="
-    private static var code = "4fbc06f6ef2234b97dcf057bc1f96928"
+    private static var code = Keys.weather
     private static var place = "q="
     private static var city = "Paris"
     
@@ -25,7 +25,7 @@ class WeatherService {
     
     func getWeather(town:String,infoBack: @escaping (Bool,[Any?])-> Void) {
         WeatherService.city = town
-        let url = URL(string: WeatherService.urlBase + WeatherService.place + WeatherService.city + WeatherService.authorization + WeatherService.code)!
+        let url = URL(string: WeatherService.urlBase + WeatherService.place + WeatherService.city + WeatherService.authorization + WeatherService.code.rawValue)!
         print(url)
         
         var request = URLRequest(url: url)
@@ -42,7 +42,7 @@ class WeatherService {
                 }
                 if let dataUnwrapped = data {
                     do {
-                        let welcomeweather = try JSONDecoder().decode(WelcomeWeather.self, from: dataUnwrapped)
+                        let welcomeweather = try JSONDecoder().decode(WeatherReturned.self, from: dataUnwrapped)
                         print(welcomeweather)
                         let iconUrl = URL(string:"http://openweathermap.org/img/w/\(welcomeweather.weather[0].icon).png")!
                         let weatherInTown = [welcomeweather.coord.lon, //0

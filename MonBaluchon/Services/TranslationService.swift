@@ -13,7 +13,7 @@ class TranslationService {
     
     private static let urlBase = "https://translation.googleapis.com/language/translate/v2?"
     private static let authorization = "&key="
-    private static var code = "AIzaSyAyMBiADbjYBlaB7eHcYHYxfg_qJbR4Hjo"
+    private static var code = Keys.translation
     private static var askForWord = "q="
     private static var toTranslate = ""
     private static var word = "\(toTranslate)"
@@ -31,7 +31,7 @@ class TranslationService {
         }
 
         TranslationService.word = text
-        let stringAdress = TranslationService.urlBase + TranslationService.askForWord + TranslationService.word + TranslationService.askForLanguage + toLanguage + TranslationService.authorization + TranslationService.code + TranslationService.format
+        let stringAdress = TranslationService.urlBase + TranslationService.askForWord + TranslationService.word + TranslationService.askForLanguage + toLanguage + TranslationService.authorization + TranslationService.code.rawValue + TranslationService.format
         print(stringAdress)
         let url = URL(string: stringAdress)!
         print(url)
@@ -47,7 +47,7 @@ class TranslationService {
                 }
                 if let dataUnwrapped = data {
                     do {
-                        let welcometranslation = try JSONDecoder().decode(WelcomeTranslation.self, from: dataUnwrapped)
+                        let welcometranslation = try JSONDecoder().decode(TranslationReturned.self, from: dataUnwrapped)
                         let wordTranslated = welcometranslation.data.translations[0]
                         print(wordTranslated.translatedText)
                         infoBack(true,wordTranslated.translatedText)

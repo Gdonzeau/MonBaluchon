@@ -10,6 +10,7 @@ import Foundation
 class ConversionService {
     static var shared = ConversionService()
     private init() {}
+    static var dicoCurrencies:[String:Double] = [:]
     
     private var session = URLSession(configuration: .default)
     
@@ -18,7 +19,7 @@ class ConversionService {
     }
     private static let urlBase = "http://data.fixer.io/api/latest?"
     private static let authorization = "&access_key="
-    private static var code = "a7e3958d36cc451f0cfa1eb0c672a31a"
+    private static var code = Keys.change
     private static var symbol = "&symbols="
     private static var value = "USD"
     private static var base = "&base="
@@ -26,14 +27,14 @@ class ConversionService {
     private static var final = "&callback=MY_FUNCTION"
     static var dicoDevises = ["USD":"usd","RUB":"rub"]
     
-    static var url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code + ConversionService.symbol + ConversionService.value)!
+    static var url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)! // + ConversionService.symbol + ConversionService.value)!
     
     private var task:URLSessionDataTask?
     
     //func getConversion(currencyName:String,infoBack: @escaping (Bool,Double?)->Void) {
     func getConversion(currencyName:String,infoBack: @escaping (Result<Double,APIErrors>)->Void) {
         ConversionService.value = currencyName
-        ConversionService.url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code + ConversionService.symbol + ConversionService.value)!
+        ConversionService.url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)! // + ConversionService.symbol + ConversionService.value)!
         let request = createConversionRequest()
         
         task?.cancel()
@@ -43,34 +44,13 @@ class ConversionService {
                     do {
                         let welcomecourse = try JSONDecoder().decode(RatesOnLine.self, from: dataUnwrapped)
                         if let valueOfChange = welcomecourse.rates[ConversionService.value] {
+                            //for numberOfcurrencies in 0 ..< welcomecourse.rates.count
+                            ConversionService.dicoCurrencies = welcomecourse.rates // Petite idée...
                             infoBack(.success(valueOfChange))
                         } else {
                             print("Chais pas")
                         }
                         
-                        /*
-                        switch ConversionService.value {
-                        case "USD" :
-                            let welcomecourse = try JSONDecoder().decode(WelcomeCourseUSD.self, from: dataUnwrapped)
-                            let valueOfChange = welcomecourse.rates.usd
-                           // infoBack(true,valueOfChange)
-                            infoBack(.success(valueOfChange))
-                            
-                        case "GBP" :
-                            let welcomecourse = try JSONDecoder().decode(WelcomeCourseGBP.self, from: dataUnwrapped)
-                            let valueOfChange = welcomecourse.rates.gbp
-                            infoBack(.success(valueOfChange))
-                            
-                        case "RUB" :
-                            let welcomecourse = try JSONDecoder().decode(WelcomeCourseRUB.self, from: dataUnwrapped)
-                            let valueOfChange = welcomecourse.rates.rub
-                            infoBack(.success(valueOfChange))
-                            
-                        default :
-                            print("Erreur")
-                            infoBack(.failure(.chépasquoi))
-                        }
- */
                     } catch {
                         print("Problème")
                         infoBack(.failure(.badFile))

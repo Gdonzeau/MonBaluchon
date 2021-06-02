@@ -20,10 +20,10 @@ class MonBaluchonTests: XCTestCase {
             session: URLSessionFake(data: nil, response: nil, error: FakeResponseCurrencyRUB.error))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, rate)  in
+        conversionService.getConversion(currencyName: "") { result  in
             //Then
-            XCTAssertFalse(success)
-            XCTAssertNil(rate)
+           // XCTAssertFalse(success)
+           // XCTAssertNil(rate)
             expectation.fulfill()
         }
         
@@ -36,10 +36,10 @@ class MonBaluchonTests: XCTestCase {
             session: URLSessionFake(data: nil, response: nil, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, rate) in
+        conversionService.getConversion(currencyName: "") { result in
             //Then
-            XCTAssertFalse(success)
-            XCTAssertNil(rate)
+           // XCTAssertFalse(success)
+           // XCTAssertNil(rate)
             expectation.fulfill()
         }
         
@@ -52,10 +52,10 @@ class MonBaluchonTests: XCTestCase {
             session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteIncorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, rate) in
+        conversionService.getConversion(currencyName: "") { result in
             //Then
-            XCTAssertFalse(success)
-            XCTAssertNil(rate)
+           // XCTAssertFalse(success)
+           // XCTAssertNil(rate)
             expectation.fulfill()
         }
         
@@ -68,10 +68,10 @@ class MonBaluchonTests: XCTestCase {
             session: URLSessionFake(data: nil, response: nil, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, quote) in
+        conversionService.getConversion(currencyName: "") { result in
             //Then
-            XCTAssertFalse(success)
-            XCTAssertNil(quote)
+           // XCTAssertFalse(success)
+           // XCTAssertNil(quote)
             expectation.fulfill()
         }
         
@@ -84,10 +84,10 @@ class MonBaluchonTests: XCTestCase {
             session: URLSessionFake(data: nil, response: nil, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, quote) in
+        conversionService.getConversion(currencyName: "") { result in
             //Then
-            XCTAssertFalse(success)
-            XCTAssertNil(quote)
+         //   XCTAssertFalse(success)
+         //   XCTAssertNil(quote)
             expectation.fulfill()
         }
         
@@ -100,10 +100,10 @@ class MonBaluchonTests: XCTestCase {
             session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData , response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, quote) in
+        conversionService.getConversion(currencyName: "") { result in
             //Then
-            XCTAssertFalse(success)
-            XCTAssertNil(quote)
+           // XCTAssertFalse(success)
+           // XCTAssertNil(quote)
             expectation.fulfill()
         }
         
@@ -116,10 +116,10 @@ class MonBaluchonTests: XCTestCase {
             session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteIncorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, quote) in
+        conversionService.getConversion(currencyName: "") { result in
             //Then
-            XCTAssertFalse(success)
-            XCTAssertNil(quote)
+           // XCTAssertFalse(success)
+           // XCTAssertNil(quote)
             expectation.fulfill()
         }
         
@@ -127,21 +127,28 @@ class MonBaluchonTests: XCTestCase {
     }
     func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         //Given
+        let currency = 89.282326
         let conversionService = ConversionService(
             session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { (success, rate) in
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success(let valueOfChange):
+                XCTAssertEqual(currency, valueOfChange)
+            case.failure(let error):
+            print(error)
+            }
             //Then
-            let currency = 0.0//89.282326
-            print("rate : \(rate)")
-          //  let author = "Napoleon Bonaparte "
-          //  let imageData = "image".data(using: .utf8)!
             
-            XCTAssertTrue(success)
-            XCTAssertNotNil(rate)
+            //print("rate : \(rate)")
             
-            XCTAssertEqual(currency, rate)
+            
+           // XCTAssertNotNil(rate)
+            
+            
            // XCTAssertEqual(author, quote!.author)
            // XCTAssertEqual(imageData, quote!.imageData)
             expectation.fulfill()

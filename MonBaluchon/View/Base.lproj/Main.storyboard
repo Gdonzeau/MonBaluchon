@@ -282,7 +282,6 @@
                                 <connections>
                                     <outlet property="dataSource" destination="JoN-AT-WME" id="tCu-dP-i2j"/>
                                     <outlet property="delegate" destination="JoN-AT-WME" id="NZe-PA-BM5"/>
-                                    <outletCollection property="gestureRecognizers" destination="Joe-9w-iie" appends="YES" id="U6G-gk-1tV"/>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PT-V0-Z1w">
@@ -348,7 +347,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Cours Devise" image="Dollar" id="fWZ-Ba-PHA"/>
                     <connections>
-                        <outlet property="LabelCurrency" destination="3PT-V0-Z1w" id="uA7-XM-twE"/>
                         <outlet property="activityIndicator" destination="DOI-KZ-lLN" id="T5D-qx-fBT"/>
                         <outlet property="buttonCurrency" destination="g4K-iw-UwO" id="a87-05-rnT"/>
                         <outlet property="course" destination="sZt-Qm-l1b" id="Cu5-Ts-TU3"/>
@@ -364,11 +362,7 @@
                         <action selector="dismissKeyboard:" destination="JoN-AT-WME" id="3eh-em-FkG"/>
                     </connections>
                 </tapGestureRecognizer>
-                <gestureRecognizer id="Joe-9w-iie" customClass="CustomGestureRecognizer" customModule="MonBaluchon" customModuleProvider="target">
-                    <connections>
-                        <action selector="customGesture:" destination="JoN-AT-WME" id="Yvh-Au-Vxm"/>
-                    </connections>
-                </gestureRecognizer>
+                <gestureRecognizer id="Joe-9w-iie" customClass="CustomGestureRecognizer" customModule="MonBaluchon" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="802.89855072463774" y="469.56521739130437"/>
         </scene>

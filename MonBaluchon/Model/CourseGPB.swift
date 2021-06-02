@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/*
 // MARK: - Welcome
 struct WelcomeCourseGBP: Codable {
     var success: Bool
@@ -26,3 +26,4 @@ struct RatesGBP: Codable {
     }
     
 }
+*/
