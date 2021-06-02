@@ -8,8 +8,9 @@
 import Foundation
 
 enum Keys: String {
-    case translation = "sdfsf"
-    case change = "fgdf"
-    case weather = "dfdfg"
+    
+    case translation = "sdfsf001"
+    case change = "fgdf001"
+    case weather = "dfdfg001"
     
 }
