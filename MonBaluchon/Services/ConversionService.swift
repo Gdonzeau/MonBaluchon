@@ -31,7 +31,6 @@ class ConversionService {
     
     private var task:URLSessionDataTask?
     
-    //func getConversion(currencyName:String,infoBack: @escaping (Bool,Double?)->Void) {
     func getConversion(currencyName:String,infoBack: @escaping (Result<Double,APIErrors>)->Void) {
         ConversionService.value = currencyName
         ConversionService.url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)! // + ConversionService.symbol + ConversionService.value)!
@@ -40,21 +39,23 @@ class ConversionService {
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
-                if let dataUnwrapped = data {
-                    do {
-                        let welcomecourse = try JSONDecoder().decode(RatesOnLine.self, from: dataUnwrapped)
-                        if let valueOfChange = welcomecourse.rates[ConversionService.value] {
-                            //for numberOfcurrencies in 0 ..< welcomecourse.rates.count
-                            ConversionService.dicoCurrencies = welcomecourse.rates // Petite idée...
-                            infoBack(.success(valueOfChange))
-                        } else {
-                            print("Chais pas")
-                        }
+                guard let dataUnwrapped = data else {
+                    return
+                }
+                do {
+                    let welcomecourse = try JSONDecoder().decode(RatesOnLine.self, from: dataUnwrapped)
+                    
+                    if let valueOfChange = welcomecourse.rates[ConversionService.value] {
+                        ConversionService.dicoCurrencies = welcomecourse.rates // Petite idée...
                         
-                    } catch {
-                        print("Problème")
-                        infoBack(.failure(.badFile))
+                        infoBack(.success(valueOfChange))
+                    } else {
+                        print("Chais pas")
                     }
+                    
+                } catch {
+                    print("Problème")
+                    infoBack(.failure(.badFile))
                 }
             }
         }
@@ -71,6 +72,4 @@ class ConversionService {
         
         return request
     }
-    
-    
 }

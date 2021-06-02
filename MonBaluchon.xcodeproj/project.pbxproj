@@ -13,7 +13,7 @@
 		046B367B2653288B0073BCC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046B36792653288B0073BCC0 /* Main.storyboard */; };
 		046B367D2653288F0073BCC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046B367C2653288F0073BCC0 /* Assets.xcassets */; };
 		046B36802653288F0073BCC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046B367E2653288F0073BCC0 /* LaunchScreen.storyboard */; };
-		046B368B2653288F0073BCC0 /* MonBaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B368A2653288F0073BCC0 /* MonBaluchonTests.swift */; };
+		046B368B2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B368A2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift */; };
 		046B36962653288F0073BCC0 /* MonBaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36952653288F0073BCC0 /* MonBaluchonUITests.swift */; };
 		046B36B62653CF2E0073BCC0 /* ConversionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36B52653CF2E0073BCC0 /* ConversionService.swift */; };
 		046B36C926541B950073BCC0 /* ChangeValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36C826541B950073BCC0 /* ChangeValueViewController.swift */; };
@@ -22,16 +22,16 @@
 		046B36DF26554BEE0073BCC0 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36DE26554BEE0073BCC0 /* TranslationViewController.swift */; };
 		046B36E42655B12C0073BCC0 /* testApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36E32655B12B0073BCC0 /* testApple.swift */; };
 		046B36E926566BB00073BCC0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36E826566BB00073BCC0 /* Weather.swift */; };
-		046B36EE26566C8C0073BCC0 /* CourseUSD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36ED26566C8C0073BCC0 /* CourseUSD.swift */; };
 		046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36F5265692BD0073BCC0 /* TranslationService.swift */; };
 		046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36FD2656BD2D0073BCC0 /* Translation.swift */; };
-		046B370626570B4F0073BCC0 /* CourseRUB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B370526570B4F0073BCC0 /* CourseRUB.swift */; };
 		046B370E2657B52D0073BCC0 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B370D2657B52D0073BCC0 /* Currencies.swift */; };
 		046B37192657C0420073BCC0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B37182657C0410073BCC0 /* Currency.swift */; };
-		046B3721265804370073BCC0 /* CourseGPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3720265804370073BCC0 /* CourseGPB.swift */; };
-		046B3726265808850073BCC0 /* CourseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* CourseAll.swift */; };
+		046B3726265808850073BCC0 /* AllRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* AllRates.swift */; };
 		047FAA662666C6DC00C477F4 /* API_Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA652666C6DC00C477F4 /* API_Errors.swift */; };
 		047FAA6B2667956B00C477F4 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA6A2667956B00C477F4 /* APIKeys.swift */; };
+		047FAA762667D17500C477F4 /* Translation.json in Resources */ = {isa = PBXBuildFile; fileRef = 047FAA752667D17500C477F4 /* Translation.json */; };
+		047FAA7E2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA7D2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift */; };
+		047FAA832667D23E00C477F4 /* FakeResponseTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA822667D23E00C477F4 /* FakeResponseTranslation.swift */; };
 		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
 		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
 		04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */; };
@@ -67,7 +67,7 @@
 		046B367F2653288F0073BCC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		046B36812653288F0073BCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046B36862653288F0073BCC0 /* MonBaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonBaluchonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		046B368A2653288F0073BCC0 /* MonBaluchonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonTests.swift; sourceTree = "<group>"; };
+		046B368A2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonTestsCurrency.swift; sourceTree = "<group>"; };
 		046B368C2653288F0073BCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046B36912653288F0073BCC0 /* MonBaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonBaluchonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046B36952653288F0073BCC0 /* MonBaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonUITests.swift; sourceTree = "<group>"; };
@@ -79,16 +79,16 @@
 		046B36DE26554BEE0073BCC0 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		046B36E32655B12B0073BCC0 /* testApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testApple.swift; sourceTree = "<group>"; };
 		046B36E826566BB00073BCC0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		046B36ED26566C8C0073BCC0 /* CourseUSD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseUSD.swift; sourceTree = "<group>"; };
 		046B36F5265692BD0073BCC0 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
 		046B36FD2656BD2D0073BCC0 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
-		046B370526570B4F0073BCC0 /* CourseRUB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRUB.swift; sourceTree = "<group>"; };
 		046B370D2657B52D0073BCC0 /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		046B37182657C0410073BCC0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		046B3720265804370073BCC0 /* CourseGPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGPB.swift; sourceTree = "<group>"; };
-		046B3725265808850073BCC0 /* CourseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAll.swift; sourceTree = "<group>"; };
+		046B3725265808850073BCC0 /* AllRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRates.swift; sourceTree = "<group>"; };
 		047FAA652666C6DC00C477F4 /* API_Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Errors.swift; sourceTree = "<group>"; };
 		047FAA6A2667956B00C477F4 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		047FAA752667D17500C477F4 /* Translation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Translation.json; sourceTree = "<group>"; };
+		047FAA7D2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonTestsTranslation.swift; sourceTree = "<group>"; };
+		047FAA822667D23E00C477F4 /* FakeResponseTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseTranslation.swift; sourceTree = "<group>"; };
 		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGesture.swift; sourceTree = "<group>"; };
@@ -158,9 +158,12 @@
 		046B36892653288F0073BCC0 /* MonBaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
-				046B368A2653288F0073BCC0 /* MonBaluchonTests.swift */,
+				046B368A2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift */,
+				047FAA7D2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift */,
 				04EDF6792660527A00004FEC /* ConversionRUB.json */,
+				047FAA752667D17500C477F4 /* Translation.json */,
 				04EDF6812660556700004FEC /* FakeResponseCurrency.swift */,
+				047FAA822667D23E00C477F4 /* FakeResponseTranslation.swift */,
 				04EDF689266195F200004FEC /* URLSessionFake.swift */,
 				046B368C2653288F0073BCC0 /* Info.plist */,
 			);
@@ -180,10 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				046B37182657C0410073BCC0 /* Currency.swift */,
-				046B3725265808850073BCC0 /* CourseAll.swift */,
-				046B36ED26566C8C0073BCC0 /* CourseUSD.swift */,
-				046B3720265804370073BCC0 /* CourseGPB.swift */,
-				046B370526570B4F0073BCC0 /* CourseRUB.swift */,
+				046B3725265808850073BCC0 /* AllRates.swift */,
 				046B370D2657B52D0073BCC0 /* Currencies.swift */,
 				04A5ACE2265A9ECA0059C5AB /* Languages.swift */,
 				04A5ACE7265AAB9C0059C5AB /* Language.swift */,
@@ -351,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EDF67A2660527A00004FEC /* ConversionRUB.json in Resources */,
+				047FAA762667D17500C477F4 /* Translation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +369,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046B36EE26566C8C0073BCC0 /* CourseUSD.swift in Sources */,
 				04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */,
 				04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */,
 				046B36B62653CF2E0073BCC0 /* ConversionService.swift in Sources */,
@@ -381,12 +381,10 @@
 				047FAA662666C6DC00C477F4 /* API_Errors.swift in Sources */,
 				046B36E42655B12C0073BCC0 /* testApple.swift in Sources */,
 				04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */,
-				046B3726265808850073BCC0 /* CourseAll.swift in Sources */,
+				046B3726265808850073BCC0 /* AllRates.swift in Sources */,
 				046B36E926566BB00073BCC0 /* Weather.swift in Sources */,
 				046B36DF26554BEE0073BCC0 /* TranslationViewController.swift in Sources */,
 				046B370E2657B52D0073BCC0 /* Currencies.swift in Sources */,
-				046B3721265804370073BCC0 /* CourseGPB.swift in Sources */,
-				046B370626570B4F0073BCC0 /* CourseRUB.swift in Sources */,
 				046B36C926541B950073BCC0 /* ChangeValueViewController.swift in Sources */,
 				046B36DA265470D70073BCC0 /* WhatWeatherViewController.swift in Sources */,
 				046B36762653288B0073BCC0 /* SceneDelegate.swift in Sources */,
@@ -398,9 +396,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047FAA7E2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift in Sources */,
 				04EDF6822660556700004FEC /* FakeResponseCurrency.swift in Sources */,
 				04EDF68A266195F200004FEC /* URLSessionFake.swift in Sources */,
-				046B368B2653288F0073BCC0 /* MonBaluchonTests.swift in Sources */,
+				046B368B2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift in Sources */,
+				047FAA832667D23E00C477F4 /* FakeResponseTranslation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

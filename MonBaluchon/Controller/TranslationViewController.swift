@@ -21,10 +21,10 @@ class TranslationViewController: UIViewController {
         toggleActivityIndicator(shown: false)
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
-                    activityIndicator.style = .large
-                } else {
-                    activityIndicator.style = .whiteLarge
-                }
+            activityIndicator.style = .large
+        } else {
+            activityIndicator.style = .whiteLarge
+        }
         textToTranslate.text = ""
         // Do any additional setup after loading the view.
     }
@@ -33,30 +33,36 @@ class TranslationViewController: UIViewController {
     }
     
     @IBAction func tranlation(_ sender: UIButton) {
+        pleaseTranslate()
+    }
+    
+    func pleaseTranslate() {
         toggleActivityIndicator(shown: true)
         if let text = textToTranslate.text {
             guard text != "" else {
-                nothingWrittenAlert()
+                allErrors(errorMessage: "You must write something.")
                 return
             }
-            print(text)
-            if let httpString = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-                print(httpString)
-                textToTranslate.resignFirstResponder()
-                chooseLanguage()
-                TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) { // text au lieu de httpString
-                    (success, result) in
-                    self.toggleActivityIndicator(shown: false)
-                    if success, let result = result {
-                        self.update(result: result)
-                    } else {
-                        // print error
-                        self.presentAlert()
-                    }
-                }
-            } else {
-                nothingWrittenAlert()
+            guard let httpString = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+                allErrors(errorMessage: "The quote download failed.")
+                return
             }
+            textToTranslate.resignFirstResponder()
+            chooseLanguage()
+            
+            TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) { // text au lieu de httpString
+                result in
+                self.toggleActivityIndicator(shown: false)
+                switch result {
+                
+                case.success(let translation):
+                    self.update(result: translation)
+                    
+                case.failure(let error):
+                    print(error)
+                }
+            }
+            
         }
     }
 }
@@ -85,10 +91,10 @@ extension TranslationViewController {
         let languageIndex = languagesPickerView.selectedRow(inComponent: 0)
         let languageName = languagesAvailable[languageIndex]
         language = Language(code: languagesSet[languageName])
-            if let languageChoosen = language.code {
-        languageCode = languageChoosen
-                print("Code: \(languageCode)")
-    }
+        if let languageChoosen = language.code {
+            languageCode = languageChoosen
+            print("Code: \(languageCode)")
+        }
     }
     private func toggleActivityIndicator(shown: Bool) {
         buttonTranslation.isHidden = shown
@@ -104,6 +110,11 @@ extension TranslationViewController {
     }
     private func presentAlert() {
         let alertVC = UIAlertController(title: "Error", message: "The quote download failed", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC,animated: true,completion: nil)
+    }
+    private func allErrors(errorMessage: String) {
+        let alertVC = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC,animated: true,completion: nil)
     }

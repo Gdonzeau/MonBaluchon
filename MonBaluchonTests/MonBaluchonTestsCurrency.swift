@@ -8,7 +8,7 @@
 import XCTest
 @testable import MonBaluchon
 
-class MonBaluchonTests: XCTestCase {
+class MonBaluchonTestsCurrency: XCTestCase {
 
     func testGivenStartConverionWhenStartThenUrlExists() {
         XCTAssertNotNil(currenciesAvailable)
@@ -142,13 +142,8 @@ class MonBaluchonTests: XCTestCase {
             print(error)
             }
             //Then
-            
-            //print("rate : \(rate)")
-            
-            
+
            // XCTAssertNotNil(rate)
-            
-            
            // XCTAssertEqual(author, quote!.author)
            // XCTAssertEqual(imageData, quote!.imageData)
             expectation.fulfill()
