@@ -32,6 +32,7 @@ class ConversionService {
     private var task:URLSessionDataTask?
     
     func getConversion(currencyName:String,infoBack: @escaping (Result<Double,APIErrors>)->Void) {
+        
         ConversionService.value = currencyName
         ConversionService.url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)! // + ConversionService.symbol + ConversionService.value)!
         let request = createConversionRequest()
@@ -40,6 +41,11 @@ class ConversionService {
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let dataUnwrapped = data else {
+                    infoBack(.failure(.noData))
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    infoBack(.failure(.noContact))
                     return
                 }
                 do {

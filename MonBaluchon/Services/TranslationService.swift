@@ -31,6 +31,7 @@ class TranslationService {
     private var task:URLSessionDataTask?
     
     func getTranslation(toLanguage:String, text: String,infoBack: @escaping (Result<String,APIErrors>)->Void) {
+        
         guard toLanguage != "" else {
             print("pas de texte")
             return
@@ -38,9 +39,8 @@ class TranslationService {
 
         TranslationService.word = text
         let stringAdress = TranslationService.urlBase + TranslationService.askForWord + TranslationService.word + TranslationService.askForLanguage + toLanguage + TranslationService.authorization + TranslationService.code.rawValue + TranslationService.format
-        print(stringAdress)
+
         let url = URL(string: stringAdress)!
-        print(url)
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let session = URLSession(configuration: .default)
@@ -48,10 +48,13 @@ class TranslationService {
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    infoBack(.failure(.chépasquoi))
+                    infoBack(.failure(.noContact))
                     return
                 }
-                if let dataUnwrapped = data {
+                guard let dataUnwrapped = data else {
+                    infoBack(.failure(.noData))
+                return
+                }
                     do {
                         let welcometranslation = try JSONDecoder().decode(TranslationReturned.self, from: dataUnwrapped)
                         let wordTranslated = welcometranslation.data.translations[0]
@@ -61,7 +64,7 @@ class TranslationService {
                         print("Problème")
                         infoBack(.failure(.badFile))
                     }
-                }
+                
             }
         }
         task?.resume()

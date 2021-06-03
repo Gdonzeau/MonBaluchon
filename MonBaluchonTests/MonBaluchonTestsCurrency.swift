@@ -10,20 +10,32 @@ import XCTest
 
 class MonBaluchonTestsCurrency: XCTestCase {
 
-    func testGivenStartConverionWhenStartThenUrlExists() {
+    func testGivenStartConversionWhenStartThenUrlExists() {
         XCTAssertNotNil(currenciesAvailable)
     }
     
-    func testGetQuoteShouldPostFailedCallbackIfError() {
-        //Given
+    func testGetConversionShouldPostFailedCallbackIfError() {
+        let errorExpected:APIErrors = .badFile
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseCurrencyRUB.error))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: FakeResponseCurrencyRUB.error))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { result  in
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                print("Youpi")
+                
+            case.failure(let error):
+            print("Pas Youpi")
+                errorReceived = error
+            }
             //Then
-           // XCTAssertFalse(success)
-           // XCTAssertNil(rate)
+            XCTAssertEqual(errorExpected, errorReceived)
             expectation.fulfill()
         }
         
@@ -31,86 +43,184 @@ class MonBaluchonTestsCurrency: XCTestCase {
     }
     
     func testGetQuoteShouldPostFailedCallbackIfNoData() {
-        //Given
+        let errorExpected:APIErrors = .noData
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
             session: URLSessionFake(data: nil, response: nil, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { result in
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                print("Youpi")
+                
+            case.failure(let error):
+            print("Pas Youpi")
+                errorReceived = error
+            }
             //Then
-           // XCTAssertFalse(success)
-           // XCTAssertNil(rate)
+            XCTAssertEqual(errorExpected, errorReceived)
             expectation.fulfill()
         }
         
-      //  wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.01)
     }
     
     func testGetQuoteShouldPostFailedCallbackIfIncorrectResponse() {
-        //Given
+        let errorExpected:APIErrors = .noContact
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteIncorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { result in
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                print("Youpi")
+                
+            case.failure(let error):
+            print("Pas Youpi")
+                errorReceived = error
+            }
             //Then
-           // XCTAssertFalse(success)
-           // XCTAssertNil(rate)
+            XCTAssertEqual(errorExpected, errorReceived)
+          //  XCTAssertEqual(currency, rate)
+           
             expectation.fulfill()
         }
         
-      //  wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.01)
     }
     // Test Image
     func testGetImageShouldPostFailedCallbackIfError() {
-        //Given
+        let errorExpected:APIErrors = .noContact
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: nil, response: nil, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { result in
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                print("Youpi")
+                
+            case.failure(let error):
+            print("Pas Youpi")
+                errorReceived = error
+            }
             //Then
-           // XCTAssertFalse(success)
-           // XCTAssertNil(quote)
+            XCTAssertEqual(errorExpected, errorReceived)
+          //  XCTAssertEqual(currency, rate)
+           
             expectation.fulfill()
         }
         
-      //  wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.01)
     }
     
     func testGetImageShouldPostFailedCallbackIfNoData() {
-        //Given
+        let errorExpected:APIErrors = .noContact
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: nil, response: nil, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { result in
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                print("Youpi")
+                
+            case.failure(let error):
+            print("Pas Youpi")
+                errorReceived = error
+            }
             //Then
-         //   XCTAssertFalse(success)
-         //   XCTAssertNil(quote)
+            XCTAssertEqual(errorExpected, errorReceived)
+          //  XCTAssertEqual(currency, rate)
+           
             expectation.fulfill()
         }
         
-      //  wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.01)
     }
     
     func testGetImageShouldPostFailedCallbackIfIncorrectResponse() {
-        //Given
+        let errorExpected:APIErrors = .noContact
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData , response: FakeResponseCurrencyRUB.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { result in
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                print("Youpi")
+                
+            case.failure(let error):
+            print("Pas Youpi")
+                errorReceived = error
+            }
             //Then
-           // XCTAssertFalse(success)
-           // XCTAssertNil(quote)
+            XCTAssertEqual(errorExpected, errorReceived)
+          //  XCTAssertEqual(currency, rate)
+           
             expectation.fulfill()
         }
         
-      //  wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetQuoteShouldPostFailedCallbackIfIncorrectData() {
+    func testGetgetCurrencyShouldPostFailedCallbackIfIncorrectData() {
+        let errorExpected:APIErrors = .noContact
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
+        let conversionService = ConversionService(
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
+        //When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                print("Youpi")
+                
+            case.failure(let error):
+            print("Pas Youpi")
+                errorReceived = error
+            }
+            //Then
+            XCTAssertEqual(errorExpected, errorReceived)
+          //  XCTAssertEqual(currency, rate)
+           
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+        /*
         //Given
         let conversionService = ConversionService(
             session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteIncorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
@@ -124,28 +234,32 @@ class MonBaluchonTestsCurrency: XCTestCase {
         }
         
       //  wait(for: [expectation], timeout: 0.01)
-    }
+ */
+    
     func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         //Given
         let currency = 89.282326
+        var rate = 0.00
+        XCTAssertNotEqual(currency, rate)
         let conversionService = ConversionService(
             session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
+        
         conversionService.getConversion(currencyName: "RUB") { result in
             
             switch result {
             
             case.success(let valueOfChange):
-                XCTAssertEqual(currency, valueOfChange)
+                rate = valueOfChange
+                
             case.failure(let error):
             print(error)
             }
             //Then
-
-           // XCTAssertNotNil(rate)
-           // XCTAssertEqual(author, quote!.author)
-           // XCTAssertEqual(imageData, quote!.imageData)
+            XCTAssertEqual(result, .success(currency))
+            XCTAssertEqual(currency, rate)
+           
             expectation.fulfill()
         }
         

@@ -11,61 +11,37 @@ import XCTest
 @testable import MonBaluchon
 
 class MonBaluchonTestsTranlation: XCTestCase {
-
+    
     func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         //Given
-        let translation = "Je m'appelle Guillaume"
+        let translationExpected = "My name is Guillaume"
+        let originalText = "Je m'appelle Guillaume"
+        //var textSent = ""
+        var finalText = ""
+        let language = "en"
+        guard let httpString = originalText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            return
+        }
+        
         let translationService = TranslationService(
             session: URLSessionFake(data: FakeResponseTranslation.quoteCorrectData, response: FakeResponseTranslation.responseOK, error: nil))
-        /*
-        (
-            session: URLSessionFake(data: FakeResponseTranslation.quoteIncorrectData, response: FakeResponseTranslation.responseOK, error: nil))
-        */
+        //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        
-        if let httpString = translation.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-        translationService.g(toLanguage: "en", text:httpString) { // text au lieu de httpString
-            result in
+        translationService.getTranslation(toLanguage: language, text: httpString) {result in
             
             switch result {
             
-            case.success(let valueOfChange):
-                XCTAssertEqual(translation, valueOfChange)
+            case.success(let translationReceived):
+                finalText = translationReceived
+                
             case.failure(let error):
                 print(error)
             }
-        }
-        }
-        
-       // let translationService = TranslationService(
-       //     session: URLSessionFake(data: FakeResponseTranslation.quoteCorrectData, response: FakeResponseTranslation.responseOK, error: nil))
-        //When
-        /*
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        translationService.getConversion(currencyName: "RUB") { result in
-            
-            switch result {
-            
-            case.success(let valueOfChange):
-                XCTAssertEqual(translation, valueOfChange)
-            case.failure(let error):
-            print(error)
-            }
-            */
             //Then
-            
-            //print("rate : \(rate)")
-            
-            
-           // XCTAssertNotNil(rate)
-            
-            
-           // XCTAssertEqual(author, quote!.author)
-           // XCTAssertEqual(imageData, quote!.imageData)
+            XCTAssertEqual(translationExpected, finalText)
             expectation.fulfill()
         }
-        
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 1.00)
     }
     
 }

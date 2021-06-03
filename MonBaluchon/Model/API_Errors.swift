@@ -9,6 +9,8 @@ import Foundation
 
 enum APIErrors: Error {
     case noContact
+    case noData
     case badFile
     case chépasquoi
+    case noError
 }
