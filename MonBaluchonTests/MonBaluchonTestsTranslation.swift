@@ -24,7 +24,7 @@ class MonBaluchonTestsTranlation: XCTestCase {
         }
         
         let translationService = TranslationService(
-            session: URLSessionFake(data: FakeResponseTranslation.quoteCorrectData, response: FakeResponseTranslation.responseOK, error: nil))
+            session: URLSessionFake(data: FakeResponseTranslation.translationCorrectData, response: FakeResponseTranslation.responseOK, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(toLanguage: language, text: httpString) {result in

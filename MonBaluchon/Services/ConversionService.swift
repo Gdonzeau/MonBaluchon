@@ -49,10 +49,10 @@ class ConversionService {
                     return
                 }
                 do {
-                    let welcomecourse = try JSONDecoder().decode(RatesOnLine.self, from: dataUnwrapped)
+                    let data = try JSONDecoder().decode(RatesOnLine.self, from: dataUnwrapped)
                     
-                    if let valueOfChange = welcomecourse.rates[ConversionService.value] {
-                        ConversionService.dicoCurrencies = welcomecourse.rates // Petite idée...
+                    if let valueOfChange = data.rates[ConversionService.value] {
+                        ConversionService.dicoCurrencies = data.rates // Petite idée...
                         
                         infoBack(.success(valueOfChange))
                     } else {

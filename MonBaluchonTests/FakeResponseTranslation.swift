@@ -9,14 +9,14 @@ import Foundation
 
 class FakeResponseTranslation {
     
-    static var quoteCorrectData: Data {
+    static var translationCorrectData: Data {
         let bundle = Bundle(for: FakeResponseTranslation.self)
         let url = bundle.url(forResource: "Translation", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         return data
     }
     
-    static let quoteIncorrectData = "erreur".data(using: .utf8)!
+    static let translationIncorrectData = "erreur".data(using: .utf8)!
     
     // MARK: - Response
     static let responseOK = HTTPURLResponse(

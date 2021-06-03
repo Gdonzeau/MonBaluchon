@@ -1,22 +1,22 @@
 //
-//  FakeResponseCurrency.swift
+//  FakeResponseWeather.swift
 //  MonBaluchonTests
 //
-//  Created by Guillaume Donzeau on 28/05/2021.
+//  Created by Guillaume Donzeau on 03/06/2021.
 //
 
 import Foundation
 
-class FakeResponseCurrencyRUB {
+class FakeResponseWeather {
     
-    static var currencyCorrectData: Data {
+    static var weatherCorrectData: Data {
         let bundle = Bundle(for: FakeResponseCurrencyRUB.self)
         let url = bundle.url(forResource: "ConversionRUB", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         return data
     }
     
-    static let curencyIncorrectData = "erreur".data(using: .utf8)!
+    static let weatherIncorrectData = "erreur".data(using: .utf8)!
     
     // MARK: - Response
     static let responseOK = HTTPURLResponse(
@@ -30,6 +30,6 @@ class FakeResponseCurrencyRUB {
 
     
     // MARK: - Error
-    class CurrencyError: Error {}
-    static let error = CurrencyError()
+    class WeatherError: Error {}
+    static let error = WeatherError()
 }

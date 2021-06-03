@@ -19,7 +19,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: FakeResponseCurrencyRUB.error))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: FakeResponseCurrencyRUB.error))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         
@@ -75,7 +75,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         
@@ -105,7 +105,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         
@@ -135,7 +135,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         
@@ -165,7 +165,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         
@@ -195,7 +195,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseKO, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         
@@ -220,29 +220,13 @@ class MonBaluchonTestsCurrency: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-        /*
-        //Given
-        let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteIncorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
-        //When
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        conversionService.getConversion(currencyName: "") { result in
-            //Then
-           // XCTAssertFalse(success)
-           // XCTAssertNil(quote)
-            expectation.fulfill()
-        }
-        
-      //  wait(for: [expectation], timeout: 0.01)
- */
-    
     func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         //Given
         let currency = 89.282326
         var rate = 0.00
         XCTAssertNotEqual(currency, rate)
         let conversionService = ConversionService(
-            session: URLSessionFake(data: FakeResponseCurrencyRUB.quoteCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
+            session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         

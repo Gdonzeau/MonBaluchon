@@ -50,7 +50,7 @@ class TranslationViewController: UIViewController {
             textToTranslate.resignFirstResponder()
             chooseLanguage()
             
-            TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) { // text au lieu de httpString
+            TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) {
                 result in
                 self.toggleActivityIndicator(shown: false)
                 switch result {
