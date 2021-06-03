@@ -25,9 +25,9 @@ class ConversionService {
     private static var base = "&base="
     private static var valueBase = "EUR"// Don't change, restricted
     private static var final = "&callback=MY_FUNCTION"
-    static var dicoDevises = ["USD":"usd","RUB":"rub"]
+    static var dicoDevises = ["USD":"usd","RUB":"rub"]// to delete
     
-    static var url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)! // + ConversionService.symbol + ConversionService.value)!
+    static var url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)!
     
     private var task:URLSessionDataTask?
     

@@ -99,7 +99,7 @@ class WeatherService {
         let pression = result[10]
         let humidity = result[8]
         //let iconUrl = result[17]
-        let descriptionWeather = "À \(townName), de lat: \(lat) et de long: \(lon), le vent vient du \(windDeg), avec une vitesse de \(windSpeed) m/s soit \(Int(windSpeed as! Double*3.6)) km/h. La température est de \(Int(temperature as! Double - 273.5)) avec une T.min de \(Int(temperatureMin as! Double - 273.5)) et une T.max de \(Int(temperatureMax as! Double - 273.5)) et une température ressentie de \(Int(ressenti as! Double - 273.5)). La pression est de \(pression) ha. L'humidité est de \(humidity)."
+        let descriptionWeather = "À \(townName), de lat: \(lat) et de long: \(lon), le vent vient du \(windDeg), avec une vitesse de \(windSpeed) m/s soit \(Int(windSpeed as! Double*3.6)) km/h. La température est de \(Int(temperature as! Double - 273.5)) degré(s) avec une T.min de \(Int(temperatureMin as! Double - 273.5)) degré(s), une T.max de \(Int(temperatureMax as! Double - 273.5)) degrés et une température ressentie de \(Int(ressenti as! Double - 273.5)) degrés. La pression est de \(pression) ha. L'humidité est de \(humidity)%."
         
         return descriptionWeather
     }

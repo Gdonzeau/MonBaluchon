@@ -35,6 +35,7 @@
 		047FAA8826690C7D00C477F4 /* WeatherMoscow.json in Resources */ = {isa = PBXBuildFile; fileRef = 047FAA8726690C7C00C477F4 /* WeatherMoscow.json */; };
 		047FAA8D26690D1700C477F4 /* MonBaluchonTestsWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA8C26690D1700C477F4 /* MonBaluchonTestsWeather.swift */; };
 		047FAA9226690D6F00C477F4 /* FakeResponseWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA9126690D6F00C477F4 /* FakeResponseWeather.swift */; };
+		047FAA9A2669783900C477F4 /* FakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA992669783900C477F4 /* FakeResponse.swift */; };
 		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
 		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
 		04A5ACED265AF4A30059C5AB /* CustomGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */; };
@@ -95,6 +96,7 @@
 		047FAA8726690C7C00C477F4 /* WeatherMoscow.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherMoscow.json; sourceTree = "<group>"; };
 		047FAA8C26690D1700C477F4 /* MonBaluchonTestsWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonTestsWeather.swift; sourceTree = "<group>"; };
 		047FAA9126690D6F00C477F4 /* FakeResponseWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseWeather.swift; sourceTree = "<group>"; };
+		047FAA992669783900C477F4 /* FakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponse.swift; sourceTree = "<group>"; };
 		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		04A5ACEC265AF4A30059C5AB /* CustomGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGesture.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				047FAA752667D17500C477F4 /* Translation.json */,
 				047FAA8726690C7C00C477F4 /* WeatherMoscow.json */,
 				04EDF6812660556700004FEC /* FakeResponseCurrency.swift */,
+				047FAA992669783900C477F4 /* FakeResponse.swift */,
 				047FAA9126690D6F00C477F4 /* FakeResponseWeather.swift */,
 				047FAA822667D23E00C477F4 /* FakeResponseTranslation.swift */,
 				04EDF689266195F200004FEC /* URLSessionFake.swift */,
@@ -409,6 +412,7 @@
 				047FAA7E2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift in Sources */,
 				047FAA8D26690D1700C477F4 /* MonBaluchonTestsWeather.swift in Sources */,
 				04EDF6822660556700004FEC /* FakeResponseCurrency.swift in Sources */,
+				047FAA9A2669783900C477F4 /* FakeResponse.swift in Sources */,
 				047FAA9226690D6F00C477F4 /* FakeResponseWeather.swift in Sources */,
 				04EDF68A266195F200004FEC /* URLSessionFake.swift in Sources */,
 				046B368B2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift in Sources */,
