@@ -24,8 +24,6 @@ class TranslationService {
     private static var toTranslate = ""
     private static var word = "\(toTranslate)"
     private static var askForLanguage = "&target="
-    private static var language = "ru"// Don't change, restricted
-    private static var final = "&callback=MY_FUNCTION"
     private static var format = "&format=html"
     
     private var task:URLSessionDataTask?
@@ -36,35 +34,41 @@ class TranslationService {
             print("pas de texte")
             return
         }
-
+        
         TranslationService.word = text
         let stringAdress = TranslationService.urlBase + TranslationService.askForWord + TranslationService.word + TranslationService.askForLanguage + toLanguage + TranslationService.authorization + TranslationService.code.rawValue + TranslationService.format
-
-        let url = URL(string: stringAdress)!
+        
+        guard let url = URL(string: stringAdress) else {
+            print("Bad URL")
+            return
+        }
+        
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
+        
         let session = URLSession(configuration: .default)
+        
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
+                guard let dataUnwrapped = data else {
+                    infoBack(.failure(.noData))
+                    return
+                }
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     infoBack(.failure(.noContact))
                     return
                 }
-                guard let dataUnwrapped = data else {
-                    infoBack(.failure(.noData))
-                return
-                }
-                    do {
-                        let welcometranslation = try JSONDecoder().decode(TranslationReturned.self, from: dataUnwrapped)
-                        let wordTranslated = welcometranslation.data.translations[0]
-                        print(wordTranslated.translatedText)
-                        infoBack(.success(wordTranslated.translatedText))
-                    } catch {
-                        print("Problème")
-                        infoBack(.failure(.badFile))
-                    }
                 
+                do {
+                    let translationDone = try JSONDecoder().decode(TranslationReturned.self, from: dataUnwrapped)
+                    
+                    let wordTranslated = translationDone.data.translations[0]
+                    infoBack(.success(wordTranslated.translatedText))
+                } catch {
+                    print("Problème")
+                    infoBack(.failure(.badFile))
+                }
             }
         }
         task?.resume()

@@ -84,7 +84,6 @@ extension ChangeValueViewController {
         toggleActivityIndicator(shown: true)
         createCurrency()
         
-        //  ConversionService.shared.getConversion(currencyName:currency.name!) { (success, valueOfChange) in
         guard let currencyChosen = currency.name else {
             allErrors(errorMessage: "Currency unknown")
             return

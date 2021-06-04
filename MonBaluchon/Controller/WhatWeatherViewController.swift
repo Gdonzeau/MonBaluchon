@@ -37,16 +37,12 @@ class WhatWeatherViewController: UIViewController {
             allErrors(errorMessage: "You must write something.")
             return
         }
-        
         guard let town = townName.text else {
-            allErrors(errorMessage: "Nom de ville non trouvé.")
+            allErrors(errorMessage: "Town's name incorrect.")
             return
         }
         print (town)
         if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-            var result0 = ""
-            var result1 = ""
-            var onVaYArriver = URL(string: "")
             townName.resignFirstResponder()
             WeatherService.shared.getWeather(town: httpString) {
                 message in
@@ -54,32 +50,28 @@ class WhatWeatherViewController: UIViewController {
                 self.toggleActivityIndicator(shown: false)
                 switch message {
                 case.success(let results):
-                    if let finalResult = results[0] {
-                        result0 = finalResult
+                    
+                    guard let weatherdescription = results[0] else {
+                        return
                     }
-                    if let iconUrl = results[1] {
-                        result1 = iconUrl
+                    guard let iconUrl = results[1] else {
+                        return
                     }
-                    if let optionnel = URL(string:result1) {
-                    onVaYArriver = optionnel
+                    guard let url = URL(string: iconUrl) else {
+                        print("Bad URL")
+                        return
                     }
-                    // Ici pourquoi faut-il un déballage multiple. En particulier, on a un String qu'on met dans une adresse. Malgré tout xcode exige son ! ou son option ?? pour fonctionner.
-                    self.update(result: result0, iconUrl: onVaYArriver!)
+                    self.update(result: weatherdescription, iconUrl: url)
                     
                 case.failure(let error):
                     print(error)
                     return
                 }
-                
-                //longitude, latitude, vitesseVent, provenance du vent, nomVille,température,ressenti,tempmin, tempmax,pressure, humidity, temp
-               // self.buildStringAnswer(result: results)
             }
         } else {
             print("Pas de ville")
         }
-        //  }
     }
-    
 }
 extension WhatWeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -93,7 +85,6 @@ extension UIImageView {
             guard let data = try? Data(contentsOf: url) else {
                 return
             }
-            //if let data = try? Data(contentsOf: url) {
             guard let image = UIImage(data:data) else {
                 return
             }

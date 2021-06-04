@@ -22,20 +22,19 @@ class ConversionService {
     private static var code = Keys.change
     private static var symbol = "&symbols="
     private static var value = "USD"
-    private static var base = "&base="
-    private static var valueBase = "EUR"// Don't change, restricted
-    private static var final = "&callback=MY_FUNCTION"
-    static var dicoDevises = ["USD":"usd","RUB":"rub"]// to delete
-    
-    static var url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)!
-    
     private var task:URLSessionDataTask?
     
     func getConversion(currencyName:String,infoBack: @escaping (Result<Double,APIErrors>)->Void) {
         
         ConversionService.value = currencyName
-        ConversionService.url = URL(string: ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue)! // + ConversionService.symbol + ConversionService.value)!
-        let request = createConversionRequest()
+        let stringAdress = ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue
+        
+        guard let url = URL(string: stringAdress) else {
+            print("Bad URL")
+            return
+        }
+        
+        let request = createConversionRequest(url:url)
         
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
@@ -70,8 +69,8 @@ class ConversionService {
         print("Demande")
     }
     
-    func createConversionRequest() -> URLRequest {
-        var request = URLRequest(url:ConversionService.url)
+    func createConversionRequest(url:URL) -> URLRequest {
+        var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let body = "method=getQuote&lang=en&format=json"
         request.httpBody = body.data(using: .utf8)
