@@ -13,7 +13,7 @@ class MonBaluchonTestsWeather: XCTestCase {
         func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
             //Given
             let town = "Moscow"
-            let weatherExpected = "À Moscow, de lat: 55.7522 et de long: 37.6156, le vent vient du 34, avec une vitesse de 3.62 m/s soit 13 km/h. La température est de 13 degré(s) avec une T.min de 11 degré(s), une T.max de 13 degrés et une température ressentie de 12 degrés. La pression est de 1025 ha. L'humidité est de 71%."
+            let weatherExpected = "À Moscow, de lat: 55.7522 et de long: 37.6156, le vent vient du 47, avec une vitesse de 5.61 m/s soit 20 km/h. La température est de 19 degré(s) avec une T.min de 19 degré(s), une T.max de 20 degrés et une température ressentie de 18 degrés. La pression est de 1024 ha. L'humidité est de 35%."
             
             var finalWeather = ""
             

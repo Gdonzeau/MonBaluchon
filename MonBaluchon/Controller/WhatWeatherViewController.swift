@@ -8,12 +8,15 @@
 import UIKit
 
 class WhatWeatherViewController: UIViewController {
-    
+    var defaultTown = "New York"
     @IBOutlet weak var townName: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var showWeather: UILabel!
     @IBOutlet weak var getWeather: UIButton!
     @IBOutlet weak var map: UIImageView!
+    @IBOutlet weak var mapDefault: UIImageView!
+    @IBOutlet weak var showWeatherDefault: UILabel!
+    @IBOutlet weak var villeParDefault: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +26,13 @@ class WhatWeatherViewController: UIViewController {
     
     @IBAction func getWeatherButton(_ sender: UIButton) {
         getTheWeather()
+        
+        //getTheWeatherDefault()
     }
     
     @IBAction func dismissKeyborad(_ sender: UITapGestureRecognizer) {
         townName.resignFirstResponder()
+        villeParDefault.resignFirstResponder()
     }
     
     func getTheWeather() {
@@ -41,7 +47,6 @@ class WhatWeatherViewController: UIViewController {
             allErrors(errorMessage: "Town's name incorrect.")
             return
         }
-        print (town)
         if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             townName.resignFirstResponder()
             WeatherService.shared.getWeather(town: httpString) {
@@ -72,10 +77,55 @@ class WhatWeatherViewController: UIViewController {
             print("Pas de ville")
         }
     }
+    
+    func getTheWeatherDefault() {
+        toggleActivityIndicator(shown: true)
+        
+        guard villeParDefault.text != "" else {
+            toggleActivityIndicator(shown: false)
+            allErrors(errorMessage: "You must write something.")
+            return
+        }
+        guard let town = villeParDefault.text else {
+            allErrors(errorMessage: "Town's name incorrect.")
+            return
+        }
+        
+        if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            villeParDefault.resignFirstResponder()
+            WeatherService.shared.getWeather(town: httpString) {
+                message in
+                
+                self.toggleActivityIndicator(shown: false)
+                switch message {
+                case.success(let results):
+                    
+                    guard let weatherdescription = results[0] else {
+                        return
+                    }
+                    guard let iconUrl = results[1] else {
+                        return
+                    }
+                    guard let url = URL(string: iconUrl) else {
+                        print("Bad URL")
+                        return
+                    }
+                    self.updateDefault(result: weatherdescription, iconUrl: url)
+                    
+                case.failure(let error):
+                    print(error)
+                    return
+                }
+            }
+        } else {
+            print("Pas de ville")
+        }
+    }
 }
 extension WhatWeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         townName.resignFirstResponder()
+        villeParDefault.resignFirstResponder()
         return true
     }
 }
@@ -103,6 +153,11 @@ extension WhatWeatherViewController {
     private func update(result: String, iconUrl:URL) {
         showWeather.text = result
         map.load(url: iconUrl)
+        getTheWeatherDefault()
+    }
+    private func updateDefault(result: String, iconUrl:URL) {
+        showWeatherDefault.text = result
+        mapDefault.load(url: iconUrl)
     }
     private func allErrors(errorMessage: String) {
         let alertVC = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)

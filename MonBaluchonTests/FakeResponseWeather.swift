@@ -10,8 +10,8 @@ import Foundation
 class FakeResponseWeather {
     
     static var weatherCorrectData: Data {
-        let bundle = Bundle(for: FakeResponseCurrencyRUB.self)
-        let url = bundle.url(forResource: "ConversionRUB", withExtension: "json")!
+        let bundle = Bundle(for: FakeResponseWeather.self)
+        let url = bundle.url(forResource: "WeatherMoscow", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         return data
     }

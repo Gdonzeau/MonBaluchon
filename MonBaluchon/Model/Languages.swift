@@ -7,18 +7,18 @@
 
 import Foundation
 
-let languagesAvailable = ["Arabe",
-                          "Anglais",
-                          "Russe",
+let languagesAvailable = ["Anglais",
+                          "Arabe",
+                          "Chinois",
                           "Espagnol",
-                          "Chinois"
+                          "Russe"
 ]
 // Language : ["Name":"codeid"]
-let languagesSet = ["Arabe":"ar",
-                    "Russe":"ru",
-                    "Anglais":"en",
+let languagesSet = ["Anglais":"en",
+                    "Arabe":"ar",
                     "Chinois":"zh",
-                    "Espagnol":"es"
+                    "Espagnol":"es",
+                    "Russe":"ru"
 ]
 
 

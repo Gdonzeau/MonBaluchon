@@ -57,7 +57,6 @@ class ConversionService {
                     } else {
                         print("Chais pas")
                     }
-                    
                 } catch {
                     print("Problème")
                     infoBack(.failure(.badFile))
@@ -65,7 +64,6 @@ class ConversionService {
             }
         }
         task?.resume()
-        
         print("Demande")
     }
     
