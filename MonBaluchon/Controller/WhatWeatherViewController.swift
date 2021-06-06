@@ -8,7 +8,7 @@
 import UIKit
 
 class WhatWeatherViewController: UIViewController {
-    var defaultTown = "New York"
+    //var defaultTown = "New York"
     @IBOutlet weak var townName: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var showWeather: UILabel!
@@ -47,9 +47,9 @@ class WhatWeatherViewController: UIViewController {
             allErrors(errorMessage: "Town's name incorrect.")
             return
         }
-        if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+      //  if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             townName.resignFirstResponder()
-            WeatherService.shared.getWeather(town: httpString) {
+            WeatherService.shared.getWeather(town: town) {
                 message in
                 
                 self.toggleActivityIndicator(shown: false)
@@ -73,9 +73,11 @@ class WhatWeatherViewController: UIViewController {
                     return
                 }
             }
+          /*
         } else {
             print("Pas de ville")
         }
+        */
     }
     
     func getTheWeatherDefault() {
@@ -91,9 +93,9 @@ class WhatWeatherViewController: UIViewController {
             return
         }
         
-        if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+       // if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             villeParDefault.resignFirstResponder()
-            WeatherService.shared.getWeather(town: httpString) {
+            WeatherService.shared.getWeather(town: town) {
                 message in
                 
                 self.toggleActivityIndicator(shown: false)
@@ -117,9 +119,11 @@ class WhatWeatherViewController: UIViewController {
                     return
                 }
             }
+            /*
         } else {
             print("Pas de ville")
         }
+ */
     }
 }
 extension WhatWeatherViewController: UITextFieldDelegate {

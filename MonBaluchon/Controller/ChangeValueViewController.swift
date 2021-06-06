@@ -10,10 +10,12 @@ import UIKit
 class ChangeValueViewController: UIViewController {
     
     var currency:Currency!
+    var currencyBase:Currency!
     
     @IBOutlet weak var buttonCurrency: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencyPickerView: UIPickerView!
+    @IBOutlet weak var labelCurrencyOrigin: UILabel!
     @IBOutlet weak var labelCurrency: UILabel!
     @IBOutlet weak var sumEURToConvert: UITextField!
     @IBOutlet weak var resultOfConversion: UITextField!
@@ -28,25 +30,67 @@ class ChangeValueViewController: UIViewController {
 extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return currenciesAvailable.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component: Int)-> String? {
-        labelCurrency.text = currenciesAvailable[row]
+        labelCurrencyOrigin.text = currenciesAvailable[pickerView.selectedRow(inComponent: 0)]
+        labelCurrency.text = currenciesAvailable[pickerView.selectedRow(inComponent: 1)]
+ /*
         if ConversionService.dicoCurrencies != [:] {
             if let newCurrencyText = ConversionService.dicoCurrencies[currenciesAvailable[row]] {
                 update(valueOfChange: newCurrencyText)
                 course.text = String(format: "%.2f" , newCurrencyText)
             }
-            //  print(ConversionService.dicoCurrencies[currenciesAvailable[row]])
         }
         if ConversionService.dicoCurrencies[currenciesAvailable[row]] != 0 {
             
         }
+ */
+        
+        let originalCurrency = pickerView.selectedRow(inComponent: 0)
+        let finalCurrency = pickerView.selectedRow(inComponent: 1)
+        labelCurrencyOrigin.text = currenciesAvailable[originalCurrency]
+        labelCurrency.text = currenciesAvailable[finalCurrency]
+       // textField.text = "\(feetList[feetIndex])'\(inchList[inchIndex])''"
+        // Convert currency
+        if ConversionService.dicoCurrencies != [:] {
+            if let newCurrencyText = ConversionService.dicoCurrencies[currenciesAvailable[finalCurrency]], let originCurrency = ConversionService.dicoCurrencies[currenciesAvailable[originalCurrency]] {
+                update(valueOfChange: newCurrencyText, currencyFrom: originCurrency)
+                course.text = String(format: "%.2f" , newCurrencyText)
+            }
+        }
+        if ConversionService.dicoCurrencies[currenciesAvailable[row]] != 0 {
+            
+        }
+        
         return currenciesAvailable[row]
+        
+        
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        /*
+        let originalCurrency = pickerView.selectedRow(inComponent: 0)
+        let finalCurrency = pickerView.selectedRow(inComponent: 1)
+        labelCurrencyOrigin.text = currenciesAvailable[originalCurrency]
+        labelCurrency.text = currenciesAvailable[finalCurrency]
+       // textField.text = "\(feetList[feetIndex])'\(inchList[inchIndex])''"
+        // Convert currency
+        if ConversionService.dicoCurrencies != [:] {
+            if let newCurrencyText = ConversionService.dicoCurrencies[currenciesAvailable[row]] {
+                update(valueOfChange: newCurrencyText)
+                course.text = String(format: "%.2f" , newCurrencyText)
+            }
+        }
+        if ConversionService.dicoCurrencies[currenciesAvailable[row]] != 0 {
+            
+        }
+        */
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,32 +132,37 @@ extension ChangeValueViewController {
             allErrors(errorMessage: "Currency unknown")
             return
         }
+        
         ConversionService.shared.getConversion(currencyName:currencyChosen) { result in
             self.toggleActivityIndicator(shown: false)
             switch result {
             
             case.success(let valueOfChange):
-                self.update(valueOfChange: valueOfChange)
+                self.update(valueOfChange: valueOfChange, currencyFrom: 1.00)
                 
             case.failure(let error):
                 print(error)
             }
         }
-        
     }
     
     private func createCurrency() {
-        let currencyIndex = currencyPickerView.selectedRow(inComponent: 0)
+        
+        let currencyIndex = currencyPickerView.selectedRow(inComponent: 1)
         let currencyName = currenciesAvailable[currencyIndex]
         currency = Currency(name: currencyName)
+        
+        let currencyOrigin = currencyPickerView.selectedRow(inComponent: 0)
+        let currencyOriginName = currenciesAvailable[currencyOrigin]
+        currencyBase = Currency(name: currencyOriginName)
     }
     private func toggleActivityIndicator(shown: Bool) {
         buttonCurrency.isHidden = shown
         activityIndicator.isHidden = !shown
     }
-    private func update(valueOfChange: Double) {
+    private func update(valueOfChange: Double, currencyFrom: Double) {
         var newCorrectionText = ""
-        course.text = String(format: "%.2f", valueOfChange)
+        course.text = String(format: "%.2f", valueOfChange * currencyFrom)
         
         if sumEURToConvert.text != "" {
             if let correctionText = sumEURToConvert.text {
@@ -121,7 +170,7 @@ extension ChangeValueViewController {
                 sumEURToConvert.text = newCorrectionText
             }
             if let eurToConvert = Double(newCorrectionText) {
-                resultOfConversion.text = String(format: "%.2f",eurToConvert * valueOfChange)// 2 digits after the point
+                resultOfConversion.text = String(format: "%.2f",eurToConvert * valueOfChange * currencyFrom)// 2 digits after the point
             } else {
                 sumEURToConvert.text = "0"
             }
