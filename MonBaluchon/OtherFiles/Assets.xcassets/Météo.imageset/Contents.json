@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Sun.png",
+      "filename" : "Météo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Sun@2x.png",
+      "filename" : "Météo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Sun@3x.png",
+      "filename" : "Météo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

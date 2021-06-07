@@ -17,14 +17,14 @@ class TranslationService {
         self.session = session
     }
     
-    private static let urlBase = "https://translation.googleapis.com/language/translate/v2?"
-    private static let authorization = "&key="
-    private static var code = Keys.translation
-    private static var askForWord = "q="
+    private let urlBase = "https://translation.googleapis.com/language/translate/v2?"
+    private let authorization = "&key="
+    private var code = Keys.translation
+    private var askForWord = "q="
     private static var toTranslate = ""
-    private static var word = "\(toTranslate)"
-    private static var askForLanguage = "&target="
-    private static var format = "&format=html"
+    private var word = "\(toTranslate)"
+    private var askForLanguage = "&target="
+    private var format = "&format=html"
     
     private var task:URLSessionDataTask?
     
@@ -35,8 +35,8 @@ class TranslationService {
             return
         }
         
-        TranslationService.word = text
-        let stringAdress = TranslationService.urlBase + TranslationService.askForWord + TranslationService.word + TranslationService.askForLanguage + toLanguage + TranslationService.authorization + TranslationService.code.rawValue + TranslationService.format
+        word = text
+        let stringAdress = urlBase + askForWord + word + askForLanguage + toLanguage + authorization + code.rawValue + format
         
         guard let url = URL(string: stringAdress) else {
             print("Bad URL")
@@ -63,7 +63,7 @@ class TranslationService {
                 do {
                     let translationDone = try JSONDecoder().decode(TranslationReturned.self, from: dataUnwrapped)
                     
-                    let wordTranslated = translationDone.data.translations[0]
+                    let wordTranslated = translationDone.data.translations[0] // À passer dans le contrôleur
                     infoBack(.success(wordTranslated.translatedText))
                 } catch {
                     print("Problème")

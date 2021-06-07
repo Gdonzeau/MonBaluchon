@@ -17,17 +17,17 @@ class ConversionService {
     init(session:URLSession) {
         self.session = session
     }
-    private static let urlBase = "http://data.fixer.io/api/latest?"
-    private static let authorization = "&access_key="
-    private static var code = Keys.change
-    private static var symbol = "&symbols="
-    private static var value = "USD"
+    private let urlBase = "http://data.fixer.io/api/latest?"
+    private let authorization = "&access_key="
+    private var code = Keys.change
+    //private static var symbol = "&symbols="
+    private var value = "USD"
     private var task:URLSessionDataTask?
     
     func getConversion(currencyName:String,infoBack: @escaping (Result<Double,APIErrors>)->Void) {
         
-        ConversionService.value = currencyName
-        let stringAdress = ConversionService.urlBase + ConversionService.authorization + ConversionService.code.rawValue
+        value = currencyName
+        let stringAdress = urlBase + authorization + code.rawValue
         
         guard let url = URL(string: stringAdress) else {
             print("Bad URL")
@@ -38,7 +38,7 @@ class ConversionService {
         
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 guard let dataUnwrapped = data else {
                     infoBack(.failure(.noData))
                     return
@@ -50,7 +50,7 @@ class ConversionService {
                 do {
                     let data = try JSONDecoder().decode(RatesOnLine.self, from: dataUnwrapped)
                     
-                    if let valueOfChange = data.rates[ConversionService.value] {
+                    if let valueOfChange = data.rates[self.value] {
                         ConversionService.dicoCurrencies = data.rates // Petite idée...
                         
                         infoBack(.success(valueOfChange))

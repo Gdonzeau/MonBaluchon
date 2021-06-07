@@ -13,4 +13,7 @@ enum APIErrors: Error {
     case badFile
     case chépasquoi
     case noError
+    case decodingError
+    case invalidURL
+    case invalidStatusCode
 }

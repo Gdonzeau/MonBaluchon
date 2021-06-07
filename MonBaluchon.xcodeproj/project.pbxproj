@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0458F660266E12BD00650CC3 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458F65F266E12BD00650CC3 /* Date.swift */; };
+		0458F665266E156400650CC3 /* CurrentDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458F664266E156400650CC3 /* CurrentDay.swift */; };
 		046B36742653288B0073BCC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36732653288B0073BCC0 /* AppDelegate.swift */; };
 		046B36762653288B0073BCC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36752653288B0073BCC0 /* SceneDelegate.swift */; };
 		046B36782653288B0073BCC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36772653288B0073BCC0 /* ViewController.swift */; };
@@ -27,7 +29,7 @@
 		046B370E2657B52D0073BCC0 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B370D2657B52D0073BCC0 /* Currencies.swift */; };
 		046B37192657C0420073BCC0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B37182657C0410073BCC0 /* Currency.swift */; };
 		046B3726265808850073BCC0 /* AllRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* AllRates.swift */; };
-		047FAA662666C6DC00C477F4 /* API_Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA652666C6DC00C477F4 /* API_Errors.swift */; };
+		047FAA662666C6DC00C477F4 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA652666C6DC00C477F4 /* NetworkErrors.swift */; };
 		047FAA6B2667956B00C477F4 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA6A2667956B00C477F4 /* APIKeys.swift */; };
 		047FAA762667D17500C477F4 /* Translation.json in Resources */ = {isa = PBXBuildFile; fileRef = 047FAA752667D17500C477F4 /* Translation.json */; };
 		047FAA7E2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA7D2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift */; };
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0458F65F266E12BD00650CC3 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		0458F664266E156400650CC3 /* CurrentDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDay.swift; sourceTree = "<group>"; };
 		046B36702653288B0073BCC0 /* MonBaluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonBaluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046B36732653288B0073BCC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046B36752653288B0073BCC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +91,7 @@
 		046B370D2657B52D0073BCC0 /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		046B37182657C0410073BCC0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		046B3725265808850073BCC0 /* AllRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRates.swift; sourceTree = "<group>"; };
-		047FAA652666C6DC00C477F4 /* API_Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Errors.swift; sourceTree = "<group>"; };
+		047FAA652666C6DC00C477F4 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		047FAA6A2667956B00C477F4 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		047FAA752667D17500C477F4 /* Translation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Translation.json; sourceTree = "<group>"; };
 		047FAA7D2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonTestsTranslation.swift; sourceTree = "<group>"; };
@@ -200,7 +204,8 @@
 				046B36FD2656BD2D0073BCC0 /* Translation.swift */,
 				046B36E826566BB00073BCC0 /* Weather.swift */,
 				046B36E32655B12B0073BCC0 /* testApple.swift */,
-				047FAA652666C6DC00C477F4 /* API_Errors.swift */,
+				047FAA652666C6DC00C477F4 /* NetworkErrors.swift */,
+				0458F65F266E12BD00650CC3 /* Date.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				046B36B52653CF2E0073BCC0 /* ConversionService.swift */,
 				046B36F5265692BD0073BCC0 /* TranslationService.swift */,
 				046B36CF2654704B0073BCC0 /* WeatherService.swift */,
+				0458F664266E156400650CC3 /* CurrentDay.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,9 +393,10 @@
 				046B37192657C0420073BCC0 /* Currency.swift in Sources */,
 				046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */,
 				046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */,
-				047FAA662666C6DC00C477F4 /* API_Errors.swift in Sources */,
+				047FAA662666C6DC00C477F4 /* NetworkErrors.swift in Sources */,
 				046B36E42655B12C0073BCC0 /* testApple.swift in Sources */,
 				04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */,
+				0458F660266E12BD00650CC3 /* Date.swift in Sources */,
 				046B3726265808850073BCC0 /* AllRates.swift in Sources */,
 				046B36E926566BB00073BCC0 /* Weather.swift in Sources */,
 				046B36DF26554BEE0073BCC0 /* TranslationViewController.swift in Sources */,
@@ -398,6 +405,7 @@
 				046B36DA265470D70073BCC0 /* WhatWeatherViewController.swift in Sources */,
 				046B36762653288B0073BCC0 /* SceneDelegate.swift in Sources */,
 				046B36D02654704B0073BCC0 /* WeatherService.swift in Sources */,
+				0458F665266E156400650CC3 /* CurrentDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,12 +11,13 @@ class TranslationViewController: UIViewController {
     
     var language:Language!
     var languageCode = ""
-    @IBOutlet weak var textToTranslate: UITextField!
-    @IBOutlet weak var translation: UILabel!
+    @IBOutlet weak var textToTranslate: UITextView!
+    @IBOutlet weak var translation: UITextView!
     
     @IBOutlet weak var languagesPickerView: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var buttonTranslation: UIButton!
+    
     override func viewDidLoad() {
         toggleActivityIndicator(shown: false)
         super.viewDidLoad()
@@ -62,7 +63,6 @@ class TranslationViewController: UIViewController {
                     print(error)
                 }
             }
-            
         }
     }
 }

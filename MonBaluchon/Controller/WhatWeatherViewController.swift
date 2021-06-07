@@ -25,7 +25,7 @@ class WhatWeatherViewController: UIViewController {
     }
     
     @IBAction func getWeatherButton(_ sender: UIButton) {
-        getTheWeather()
+        getTheWeather(townName: townName!)
         
         //getTheWeatherDefault()
     }
@@ -34,10 +34,10 @@ class WhatWeatherViewController: UIViewController {
         townName.resignFirstResponder()
         villeParDefault.resignFirstResponder()
     }
-    
-    func getTheWeather() {
+
+    func getTheWeather(townName: UITextField!) {
         toggleActivityIndicator(shown: true)
-        
+
         guard townName.text != "" else {
             toggleActivityIndicator(shown: false)
             allErrors(errorMessage: "You must write something.")
@@ -47,39 +47,31 @@ class WhatWeatherViewController: UIViewController {
             allErrors(errorMessage: "Town's name incorrect.")
             return
         }
-      //  if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-            townName.resignFirstResponder()
-            WeatherService.shared.getWeather(town: town) {
-                message in
-                
-                self.toggleActivityIndicator(shown: false)
-                switch message {
-                case.success(let results):
-                    
-                    guard let weatherdescription = results[0] else {
-                        return
-                    }
-                    guard let iconUrl = results[1] else {
-                        return
-                    }
-                    guard let url = URL(string: iconUrl) else {
-                        print("Bad URL")
-                        return
-                    }
-                    self.update(result: weatherdescription, iconUrl: url)
-                    
-                case.failure(let error):
-                    print(error)
+        townName.resignFirstResponder()
+        WeatherService.shared.getWeather(town: town) {
+            message in
+
+            self.toggleActivityIndicator(shown: false)
+            switch message {
+            case.success(let results):
+                print("results reçu : \(results)")
+                let iconUrl = "http://openweathermap.org/img/w/\(results.weather[0].icon).png"
+
+                guard let url = URL(string: iconUrl) else {
+                    print("Bad URL")
                     return
                 }
+                let weatherdata = [results.name,results.main.temp,results.weather[0].weatherDescription] as [Any]
+
+                self.update(result: self.buildStringAnswer(result: weatherdata), iconUrl: url)
+
+            case.failure(let error):
+                print(error)
+                return
             }
-          /*
-        } else {
-            print("Pas de ville")
         }
-        */
     }
-    
+
     func getTheWeatherDefault() {
         toggleActivityIndicator(shown: true)
         
@@ -92,38 +84,29 @@ class WhatWeatherViewController: UIViewController {
             allErrors(errorMessage: "Town's name incorrect.")
             return
         }
-        
-       // if let httpString = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-            villeParDefault.resignFirstResponder()
-            WeatherService.shared.getWeather(town: town) {
-                message in
+
+        villeParDefault.resignFirstResponder()
+        WeatherService.shared.getWeather(town: town) {
+            message in
+
+            self.toggleActivityIndicator(shown: false)
+            switch message {
+            case.success(let results):
+                let iconUrl = "http://openweathermap.org/img/w/\(results.weather[0].icon).png"
                 
-                self.toggleActivityIndicator(shown: false)
-                switch message {
-                case.success(let results):
-                    
-                    guard let weatherdescription = results[0] else {
-                        return
-                    }
-                    guard let iconUrl = results[1] else {
-                        return
-                    }
-                    guard let url = URL(string: iconUrl) else {
-                        print("Bad URL")
-                        return
-                    }
-                    self.updateDefault(result: weatherdescription, iconUrl: url)
-                    
-                case.failure(let error):
-                    print(error)
+                guard let url = URL(string: iconUrl) else {
+                    print("Bad URL")
                     return
                 }
+                let weatherdata = [results.name,results.main.temp,results.weather[0].weatherDescription] as [Any]
+
+                self.updateDefault(result: self.buildStringAnswer(result: weatherdata), iconUrl: url)
+
+            case.failure(let error):
+                print(error)
+                return
             }
-            /*
-        } else {
-            print("Pas de ville")
         }
- */
     }
 }
 extension WhatWeatherViewController: UITextFieldDelegate {
@@ -149,6 +132,14 @@ extension UIImageView {
     }
 }
 extension WhatWeatherViewController {
+
+    func buildStringAnswer(result: [Any])-> String {
+        let townName = result[0]
+        let temperature = result[1]
+        let description = result[2]
+        let descriptionWeather = "\(townName), \n temperature : \n \(Int(temperature as! Double)) degrees \n and weather is \n \(description)"
+        return descriptionWeather
+    }
     
     private func toggleActivityIndicator(shown: Bool) {
         getWeather.isHidden = shown
@@ -168,5 +159,4 @@ extension WhatWeatherViewController {
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC,animated: true,completion: nil)
     }
-    
 }
