@@ -34,7 +34,7 @@ class WeatherService {
         let stringAdress = urlBase + place + httpTown + authorization + code.rawValue + andUnits + metric
         
         guard let url = URL(string: stringAdress) else {
-            print("Bad URL")
+            infoBack(.failure(.invalidURL))
             return
         }
         
@@ -44,7 +44,7 @@ class WeatherService {
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    infoBack(.failure(.noContact))
+                    infoBack(.failure(.invalidStatusCode))
                     return
                 }
                 guard let dataUnwrapped = data else {
@@ -55,11 +55,8 @@ class WeatherService {
                     let weatherReceived = try JSONDecoder().decode(WeatherReturned.self, from: dataUnwrapped)
                     infoBack(.success(weatherReceived))
                 } catch {
-                    let str = String(decoding: dataUnwrapped, as: UTF8.self)
-                    print("str02 : \(str)")
-                    print("Problème")
+                    infoBack(.failure(.chépasquoi))
                     return
-                    //  infoBack(false,weatherInTown) // Gérer le cas d'erreur
                 }
                 
             }

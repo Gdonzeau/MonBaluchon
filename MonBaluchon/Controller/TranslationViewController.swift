@@ -57,7 +57,10 @@ class TranslationViewController: UIViewController {
                 switch result {
                 
                 case.success(let translation):
-                    self.update(result: translation)
+                    
+                    let wordTranslated = translation.data.translations[0].translatedText
+                    
+                    self.update(result: wordTranslated)
                     
                 case.failure(let error):
                     print(error)

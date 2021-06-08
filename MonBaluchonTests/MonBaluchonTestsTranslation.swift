@@ -32,7 +32,8 @@ class MonBaluchonTestsTranlation: XCTestCase {
             switch result {
             
             case.success(let translationReceived):
-                finalText = translationReceived
+                finalText = translationReceived.data.translations[0].translatedText
+                
                 
             case.failure(let error):
                 print(error)

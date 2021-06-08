@@ -56,7 +56,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
             switch result {
             
             case.success( _):
-                print("Youpi")
+                XCTFail()
                 
             case.failure(let error):
             print("Pas Youpi")
@@ -71,7 +71,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
     }
     
     func testGetQuoteShouldPostFailedCallbackIfIncorrectResponse() {
-        let errorExpected:APIErrors = .noContact
+        let errorExpected:APIErrors = .invalidStatusCode
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
@@ -84,10 +84,9 @@ class MonBaluchonTestsCurrency: XCTestCase {
             switch result {
             
             case.success( _):
-                print("Youpi")
+                XCTFail()
                 
             case.failure(let error):
-            print("Pas Youpi")
                 errorReceived = error
             }
             //Then
@@ -101,7 +100,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
     }
     // Test Image
     func testGetImageShouldPostFailedCallbackIfError() {
-        let errorExpected:APIErrors = .noContact
+        let errorExpected:APIErrors = .invalidStatusCode
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
@@ -131,7 +130,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
     }
     
     func testGetImageShouldPostFailedCallbackIfNoData() {
-        let errorExpected:APIErrors = .noContact
+        let errorExpected:APIErrors = .invalidStatusCode
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
@@ -161,7 +160,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
     }
     
     func testGetImageShouldPostFailedCallbackIfIncorrectResponse() {
-        let errorExpected:APIErrors = .noContact
+        let errorExpected:APIErrors = .invalidStatusCode
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
@@ -191,7 +190,7 @@ class MonBaluchonTestsCurrency: XCTestCase {
     }
     
     func testGetgetCurrencyShouldPostFailedCallbackIfIncorrectData() {
-        let errorExpected:APIErrors = .noContact
+        let errorExpected:APIErrors = .invalidStatusCode
         var errorReceived:APIErrors = .noError
         XCTAssertNotEqual(errorExpected, errorReceived)
         let conversionService = ConversionService(
@@ -223,8 +222,8 @@ class MonBaluchonTestsCurrency: XCTestCase {
     func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         //Given
         let currency = 89.282326
-        var rate = 0.00
-        XCTAssertNotEqual(currency, rate)
+        var rateToCheck = 0.00
+        XCTAssertNotEqual(currency, rateToCheck)
         let conversionService = ConversionService(
             session: URLSessionFake(data: FakeResponseCurrencyRUB.currencyCorrectData, response: FakeResponseCurrencyRUB.responseOK, error: nil))
         //When
@@ -234,15 +233,18 @@ class MonBaluchonTestsCurrency: XCTestCase {
             
             switch result {
             
-            case.success(let valueOfChange):
-                rate = valueOfChange
+            case.success(let data):
+                guard let rate = data.rates["RUB"] else {
+                    return
+                }
+                rateToCheck = rate
                 
             case.failure(let error):
             print(error)
             }
             //Then
-            XCTAssertEqual(result, .success(currency))
-            XCTAssertEqual(currency, rate)
+            
+            XCTAssertEqual(currency, rateToCheck)
            
             expectation.fulfill()
         }

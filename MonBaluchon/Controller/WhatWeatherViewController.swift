@@ -25,6 +25,7 @@ class WhatWeatherViewController: UIViewController {
     }
     
     @IBAction func getWeatherButton(_ sender: UIButton) {
+        let towns = [townName!,villeParDefault!]
         getTheWeather(townName: townName!)
         
         //getTheWeatherDefault()
@@ -61,9 +62,9 @@ class WhatWeatherViewController: UIViewController {
                     print("Bad URL")
                     return
                 }
-                let weatherdata = [results.name,results.main.temp,results.weather[0].weatherDescription] as [Any]
+                let weatherData = [results.name,results.main.temp,results.weather[0].weatherDescription] as [Any]
 
-                self.update(result: self.buildStringAnswer(result: weatherdata), iconUrl: url)
+                self.update(result: self.buildStringAnswer(result: weatherData), iconUrl: url)
 
             case.failure(let error):
                 print(error)

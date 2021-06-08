@@ -9,11 +9,12 @@ import XCTest
 @testable import MonBaluchon
 
 class MonBaluchonTestsWeather: XCTestCase {
+    var whatWeather = WhatWeatherViewController()
         
         func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
             //Given
             let town = "Moscow"
-            let weatherExpected = "À Moscow, de lat: 55.7522 et de long: 37.6156, le vent vient du 47, avec une vitesse de 5.61 m/s soit 20 km/h. La température est de 19 degré(s) avec une T.min de 19 degré(s), une T.max de 20 degrés et une température ressentie de 18 degrés. La pression est de 1024 ha. L'humidité est de 35%."
+            let weatherExpected = "Moscow, \n temperature : \n 19 degrees \n and weather is \n clear sky"
             
             var finalWeather = ""
             
@@ -25,9 +26,9 @@ class MonBaluchonTestsWeather: XCTestCase {
                 switch result {
                 
                 case.success(let townReceived):
-                    if let weatherReceived = townReceived[0] {
-                    finalWeather = weatherReceived
-                    }
+                    let weatherData = [townReceived.name,townReceived.main.temp,townReceived.weather[0].weatherDescription] as [Any]
+                    
+                    finalWeather = self.whatWeather.buildStringAnswer(result: weatherData)
                     
                 case.failure(let error):
                     print(error)

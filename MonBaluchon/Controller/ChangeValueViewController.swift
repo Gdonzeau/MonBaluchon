@@ -12,6 +12,8 @@ class ChangeValueViewController: UIViewController {
     var currency:Currency!
     var currencyBase:Currency!
     
+    private var dicoCurrencies:[String:Double] = [:]
+    
     @IBOutlet weak var buttonCurrency: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencyPickerView: UIPickerView!
@@ -45,8 +47,8 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         labelCurrencyOrigin.text = currenciesAvailable[pickerView.selectedRow(inComponent: 0)]
         labelCurrency.text = currenciesAvailable[pickerView.selectedRow(inComponent: 1)]
         
-        if ConversionService.dicoCurrencies != [:] {
-            if let newCurrencyText = ConversionService.dicoCurrencies[currenciesAvailable[pickerView.selectedRow(inComponent: 1)]], let currencyFrom = ConversionService.dicoCurrencies[currenciesAvailable[pickerView.selectedRow(inComponent: 0)]]{
+        if dicoCurrencies != [:] {
+            if let newCurrencyText = dicoCurrencies[currenciesAvailable[pickerView.selectedRow(inComponent: 1)]], let currencyFrom = dicoCurrencies[currenciesAvailable[pickerView.selectedRow(inComponent: 0)]]{
                 update(valueOfChange: newCurrencyText,currencyFrom: currencyFrom)
             }
         }
@@ -61,13 +63,14 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         } else {
             activityIndicator.style = .whiteLarge
         }
+        /*
         // Calendrier
         let lastDay = CurrentDay.lastDateUsed
         calendar()
         print("Test : \(CurrentDay.lastDateUsed)")
         
         // Fin Calendrier
-        
+        */
         toggleActivityIndicator(shown: false)
         // Do any additional setup after loading the view.
     }
@@ -106,14 +109,19 @@ extension ChangeValueViewController {
             self.toggleActivityIndicator(shown: false)
             switch result {
             
-            case.success(let valueOfChange):
+            case.success(let data):
+               // if let valueOfChange = data.rates[currencyChosen] {
+                    self.dicoCurrencies = data.rates // Petite idée...
+               // }
+                
                 guard let currencyFrom = self.labelCurrencyOrigin.text, let currencyTo = self.labelCurrency.text else {
                     return
                 }
                 
-                guard let currencyFromValue = ConversionService.dicoCurrencies[currencyFrom], let currencyToValue = ConversionService.dicoCurrencies[currencyTo] else {
+                guard let currencyFromValue = self.dicoCurrencies[currencyFrom], let currencyToValue = self.dicoCurrencies[currencyTo] else {
                     return
                 }
+                
                 
                 self.update(valueOfChange: currencyToValue, currencyFrom: currencyFromValue)
                 

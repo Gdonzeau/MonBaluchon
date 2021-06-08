@@ -10,27 +10,25 @@ import Foundation
 class ConversionService {
     static var shared = ConversionService()
     private init() {}
-    static var dicoCurrencies:[String:Double] = [:]
-    
     private var session = URLSession(configuration: .default)
     
     init(session:URLSession) {
         self.session = session
     }
+    
     private let urlBase = "http://data.fixer.io/api/latest?"
     private let authorization = "&access_key="
     private var code = Keys.change
-    //private static var symbol = "&symbols="
     private var value = "USD"
     private var task:URLSessionDataTask?
     
-    func getConversion(currencyName:String,infoBack: @escaping (Result<Double,APIErrors>)->Void) {
+    func getConversion(currencyName:String,infoBack: @escaping (Result<RatesOnLine,APIErrors>)->Void) {
         
         value = currencyName
         let stringAdress = urlBase + authorization + code.rawValue
         
         guard let url = URL(string: stringAdress) else {
-            print("Bad URL")
+            infoBack(.failure(.invalidURL))
             return
         }
         
@@ -38,25 +36,19 @@ class ConversionService {
         
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async { [self] in
+            DispatchQueue.main.async {
                 guard let dataUnwrapped = data else {
                     infoBack(.failure(.noData))
                     return
                 }
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    infoBack(.failure(.noContact))
+                    infoBack(.failure(.invalidStatusCode))
                     return
                 }
                 do {
                     let data = try JSONDecoder().decode(RatesOnLine.self, from: dataUnwrapped)
+                    infoBack(.success(data))
                     
-                    if let valueOfChange = data.rates[self.value] {
-                        ConversionService.dicoCurrencies = data.rates // Petite idée...
-                        
-                        infoBack(.success(valueOfChange))
-                    } else {
-                        print("Chais pas")
-                    }
                 } catch {
                     print("Problème")
                     infoBack(.failure(.badFile))

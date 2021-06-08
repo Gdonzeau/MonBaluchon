@@ -221,7 +221,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gia-rc-Rsv">
-                                        <rect key="frame" x="79" y="0.0" width="177" height="72"/>
+                                        <rect key="frame" x="79" y="0.0" width="133" height="72"/>
                                         <color key="backgroundColor" red="0.51539103141502585" green="0.3664799016880208" blue="0.20070692503203277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="72" id="fYT-PV-Q0H"/>
@@ -239,6 +239,9 @@
                                             <action selector="getWeatherButton:" destination="CtH-dv-Kxz" eventType="touchUpInside" id="xSd-D2-fkb"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VNr-81-nSV">
+                                        <rect key="frame" x="219" y="0.0" width="37" height="72"/>
+                                    </activityIndicatorView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h5c-sy-lxl">
                                         <rect key="frame" x="263" y="0.0" width="72" height="72"/>
                                         <constraints>
@@ -251,10 +254,6 @@
                                     <constraint firstAttribute="height" constant="72" id="FhJ-ze-NfK"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VNr-81-nSV">
-                                <rect key="frame" x="189" y="384" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LSD-Gv-moV"/>
                         <color key="backgroundColor" red="0.74901960784313726" green="0.60201936709436621" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
