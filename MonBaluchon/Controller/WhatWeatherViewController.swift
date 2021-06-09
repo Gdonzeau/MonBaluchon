@@ -104,8 +104,7 @@ class WhatWeatherViewController: UIViewController {
                 self.updateDefault(result: self.buildStringAnswer(result: weatherdata), iconUrl: url)
 
             case.failure(let error):
-                print(error)
-                return
+                self.allErrors(errorMessage: error.rawValue)
             }
         }
     }

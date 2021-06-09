@@ -7,13 +7,14 @@
 
 import Foundation
 
-enum APIErrors: Error {
+enum APIErrors: String, Error {
     case noContact
     case noData
     case badFile
     case chépasquoi
-    case noError
+    case noError = "There is no error."
     case decodingError
-    case invalidURL
+    case invalidURL = "Not the right adress."
     case invalidStatusCode
+    case errorGenerated
 }

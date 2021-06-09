@@ -45,7 +45,7 @@ class TranslationViewController: UIViewController {
                 return
             }
             guard let httpString = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-                allErrors(errorMessage: "The quote download failed.")
+                allErrors(errorMessage: "Bad url.")
                 return
             }
             textToTranslate.resignFirstResponder()
@@ -63,7 +63,7 @@ class TranslationViewController: UIViewController {
                     self.update(result: wordTranslated)
                     
                 case.failure(let error):
-                    print(error)
+                    self.allErrors(errorMessage: error.rawValue)
                 }
             }
         }

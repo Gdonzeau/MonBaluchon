@@ -13,6 +13,33 @@ class MonBaluchonTestsCurrency: XCTestCase {
     func testGivenStartConversionWhenStartThenUrlExists() {
         XCTAssertNotNil(currenciesAvailable)
     }
+    func testGetTranslationShouldPostFailedCallbackIfIncorrectUrl() {
+        let errorExpected:APIErrors = .invalidURL
+        var errorReceived:APIErrors = .noError
+        XCTAssertNotEqual(errorExpected, errorReceived)
+        // No URL to configure...
+        let conversionService = ConversionService(
+            session: URLSessionFake(data: nil, response: nil, error: nil))
+        //When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        
+        conversionService.getConversion(currencyName: "RUB") { result in
+            
+            switch result {
+            
+            case.success( _):
+                XCTFail()
+                
+            case.failure(let error):
+                errorReceived = error
+            }
+            //Then
+            XCTAssertEqual(errorExpected, errorReceived)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
     
     func testGetConversionShouldPostFailedCallbackIfError() {
         let errorExpected:APIErrors = .badFile
@@ -28,10 +55,9 @@ class MonBaluchonTestsCurrency: XCTestCase {
             switch result {
             
             case.success( _):
-                print("Youpi")
+                XCTFail()
                 
             case.failure(let error):
-            print("Pas Youpi")
                 errorReceived = error
             }
             //Then

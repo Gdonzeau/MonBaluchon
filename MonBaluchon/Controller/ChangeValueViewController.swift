@@ -126,7 +126,7 @@ extension ChangeValueViewController {
                 self.update(valueOfChange: currencyToValue, currencyFrom: currencyFromValue)
                 
             case.failure(let error):
-                print(error)
+                self.allErrors(errorMessage: error.rawValue)
             }
         }
     }

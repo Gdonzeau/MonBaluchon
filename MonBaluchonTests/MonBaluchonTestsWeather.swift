@@ -39,4 +39,29 @@ class MonBaluchonTestsWeather: XCTestCase {
             }
             wait(for: [expectation], timeout: 1.00)
         }
+    func testGetWeatherShouldPostFailedCallbackIfBadUrl() {
+        //Given
+        let town = "Mos ow"
+        let errorExpected = APIErrors.invalidURL
+        var errorReceived = APIErrors.noError
+        
+        let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil))
+        //When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        weatherService.getWeather(town: town) {result in
+            
+            switch result {
+            
+            case.success( _):
+                XCTFail()
+                
+            case.failure(let error):
+                errorReceived = error
+            }
+            //Then
+            XCTAssertEqual(errorExpected, errorReceived)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1.00)
+    }
 }

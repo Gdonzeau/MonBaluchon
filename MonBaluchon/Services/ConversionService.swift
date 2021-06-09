@@ -37,6 +37,10 @@ class ConversionService {
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
+                guard error == nil  else {
+                    infoBack(.failure(.errorGenerated))
+                    return
+                }
                 guard let dataUnwrapped = data else {
                     infoBack(.failure(.noData))
                     return
