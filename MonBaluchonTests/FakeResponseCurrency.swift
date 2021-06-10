@@ -16,7 +16,7 @@ class FakeResponseCurrencyRUB {
         return data
     }
     
-    static let curencyIncorrectData = "erreur".data(using: .utf8)!
+    static let currencyIncorrectData = "erreur".data(using: .utf8)!
     
     // MARK: - Response
     static let responseOK = HTTPURLResponse(

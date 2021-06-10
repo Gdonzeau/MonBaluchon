@@ -11,6 +11,16 @@ class TranslationViewController: UIViewController {
     
     var language:Language!
     var languageCode = ""
+    
+    private let urlBase = "https://translation.googleapis.com/language/translate/v2?"
+    private let authorization = "&key="
+    private var code = Keys.translation
+    private var askForWord = "q="
+    private var askForLanguage = "&target="
+    private var format = "&format=html"
+    
+    
+    
     @IBOutlet weak var textToTranslate: UITextView!
     @IBOutlet weak var translation: UITextView!
     
@@ -39,19 +49,29 @@ class TranslationViewController: UIViewController {
     
     func pleaseTranslate() {
         toggleActivityIndicator(shown: true)
+        
         if let text = textToTranslate.text {
             guard text != "" else {
                 allErrors(errorMessage: "You must write something.")
                 return
             }
-            guard let httpString = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-                allErrors(errorMessage: "Bad url.")
+            //var toTranslate = ""
+            let word = "\(text)"
+            
+            print("word :\(word)")
+            
+            guard let httpString = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+                allErrors(errorMessage:"Bad url.")
                 return
             }
+            
             textToTranslate.resignFirstResponder()
             chooseLanguage()
             
-            TranslationService.shared.getTranslation(toLanguage: languageCode, text:httpString) {
+            let stringAdress = urlBase + askForWord + httpString + askForLanguage + languageCode + authorization + code.rawValue + format
+            
+            
+            TranslationService.shared.getTranslation(stringAdress : stringAdress) {
                 result in
                 self.toggleActivityIndicator(shown: false)
                 switch result {

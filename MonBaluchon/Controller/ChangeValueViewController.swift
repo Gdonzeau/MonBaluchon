@@ -12,6 +12,11 @@ class ChangeValueViewController: UIViewController {
     var currency:Currency!
     var currencyBase:Currency!
     
+    private let urlBase = "http://data.fixer.io/api/latest?"
+    private let authorization = "&access_key="
+    private var code = Keys.change
+    private var value = "USD"
+    
     private var dicoCurrencies:[String:Double] = [:]
     
     @IBOutlet weak var buttonCurrency: UIButton!
@@ -31,15 +36,15 @@ class ChangeValueViewController: UIViewController {
 extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-       // print("1")
+        // print("1")
         return 2
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       // print("2")
+        // print("2")
         return currenciesAvailable.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component: Int)-> String? {
-       // print("3")
+        // print("3")
         return currenciesAvailable[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -64,13 +69,13 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             activityIndicator.style = .whiteLarge
         }
         /*
-        // Calendrier
-        let lastDay = CurrentDay.lastDateUsed
-        calendar()
-        print("Test : \(CurrentDay.lastDateUsed)")
-        
-        // Fin Calendrier
-        */
+         // Calendrier
+         let lastDay = CurrentDay.lastDateUsed
+         calendar()
+         print("Test : \(CurrentDay.lastDateUsed)")
+         
+         // Fin Calendrier
+         */
         toggleActivityIndicator(shown: false)
         // Do any additional setup after loading the view.
     }
@@ -100,35 +105,35 @@ extension ChangeValueViewController {
         toggleActivityIndicator(shown: true)
         createCurrency()
         
-        guard let currencyChosen = currency.name else {
-            allErrors(errorMessage: "Currency unknown")
-            return
-        }
-        
-        ConversionService.shared.getConversion(currencyName:currencyChosen) { result in
+        let stringAdress = urlBase + authorization + code.rawValue
+        /*
+         guard let currencyChosen = currency.name else {
+         allErrors(errorMessage: "Currency unknown")
+         return
+         }
+         */
+        ConversionService.shared.getConversion(stringAdress: stringAdress) { result in
             self.toggleActivityIndicator(shown: false)
             switch result {
             
             case.success(let data):
-               // if let valueOfChange = data.rates[currencyChosen] {
-                    self.dicoCurrencies = data.rates // Petite idée...
-               // }
-                
-                guard let currencyFrom = self.labelCurrencyOrigin.text, let currencyTo = self.labelCurrency.text else {
-                    return
-                }
-                
-                guard let currencyFromValue = self.dicoCurrencies[currencyFrom], let currencyToValue = self.dicoCurrencies[currencyTo] else {
-                    return
-                }
-                
-                
-                self.update(valueOfChange: currencyToValue, currencyFrom: currencyFromValue)
-                
+                self.prepareUpdate(data: data)
             case.failure(let error):
                 self.allErrors(errorMessage: error.rawValue)
             }
         }
+    }
+    
+    private func prepareUpdate(data: RatesOnLine) {
+        
+        self.dicoCurrencies = data.rates // Petite idée...
+        guard let currencyFrom = self.labelCurrencyOrigin.text, let currencyTo = self.labelCurrency.text else {
+            return
+        }
+        guard let currencyFromValue = self.dicoCurrencies[currencyFrom], let currencyToValue = self.dicoCurrencies[currencyTo] else {
+            return
+        }
+        self.update(valueOfChange: currencyToValue, currencyFrom: currencyFromValue)
     }
     
     private func createCurrency() {
@@ -147,7 +152,7 @@ extension ChangeValueViewController {
     }
     private func update(valueOfChange: Double, currencyFrom: Double) {
         var newCorrectionText = ""
-      //  course.text = String(format: "%.2f", valueOfChange * currencyFrom)
+        //  course.text = String(format: "%.2f", valueOfChange * currencyFrom)
         
         if sumEURToConvert.text != "" {
             if let correctionText = sumEURToConvert.text { // Get a available format
@@ -184,10 +189,10 @@ extension ChangeValueViewController {
             .month,
             .day
         ]
-
+        
         // get the components
         let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
-
+        
         // now the components are available
         guard let year = dateTimeComponents.year else {
             return
@@ -201,8 +206,6 @@ extension ChangeValueViewController {
         CurrentDay.year = String(year)
         CurrentDay.month = String(month)
         CurrentDay.day = String(day)
-        
-        
     }
     
     private func allErrors(errorMessage: String) {

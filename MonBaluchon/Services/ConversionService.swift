@@ -15,17 +15,18 @@ class ConversionService {
     init(session:URLSession) {
         self.session = session
     }
-    
+    /*
     private let urlBase = "http://data.fixer.io/api/latest?"
     private let authorization = "&access_key="
     private var code = Keys.change
     private var value = "USD"
+    */
     private var task:URLSessionDataTask?
     
-    func getConversion(currencyName:String,infoBack: @escaping (Result<RatesOnLine,APIErrors>)->Void) {
+    func getConversion(stringAdress: String, infoBack: @escaping (Result<RatesOnLine,APIErrors>)->Void) {
         
-        value = currencyName
-        let stringAdress = urlBase + authorization + code.rawValue
+        //let value = currencyName
+        //let stringAdress = stringAdress
         
         guard let url = URL(string: stringAdress) else {
             infoBack(.failure(.invalidURL))
@@ -54,7 +55,6 @@ class ConversionService {
                     infoBack(.success(data))
                     
                 } catch {
-                    print("Problème")
                     infoBack(.failure(.badFile))
                 }
             }
