@@ -15,7 +15,7 @@ class ChangeValueViewController: UIViewController {
     private let urlBase = "http://data.fixer.io/api/latest?"
     private let authorization = "&access_key="
     private var code = Keys.change
-    private var value = "USD"
+    //private var value = "USD"
     
     private var dicoCurrencies:[String:Double] = [:]
     

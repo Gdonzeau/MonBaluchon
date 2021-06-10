@@ -10,3 +10,4 @@ import Foundation
 struct Currency {
     var name: String?
 }
+

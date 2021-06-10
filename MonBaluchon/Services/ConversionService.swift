@@ -15,18 +15,10 @@ class ConversionService {
     init(session:URLSession) {
         self.session = session
     }
-    /*
-    private let urlBase = "http://data.fixer.io/api/latest?"
-    private let authorization = "&access_key="
-    private var code = Keys.change
-    private var value = "USD"
-    */
+    
     private var task:URLSessionDataTask?
     
     func getConversion(stringAdress: String, infoBack: @escaping (Result<RatesOnLine,APIErrors>)->Void) {
-        
-        //let value = currencyName
-        //let stringAdress = stringAdress
         
         guard let url = URL(string: stringAdress) else {
             infoBack(.failure(.invalidURL))

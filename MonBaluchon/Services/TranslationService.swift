@@ -15,28 +15,10 @@ class TranslationService {
         self.session = session
     }
     private var session = URLSession(configuration: .default)
-    /*
-    private let urlBase = "https://translation.googleapis.com/language/translate/v2?"
-    private let authorization = "&key="
-    private var code = Keys.translation
-    private var askForWord = "q="
-    private static var toTranslate = ""
-    private var word = "\(toTranslate)"
-    private var askForLanguage = "&target="
-    private var format = "&format=html"
-    */
     
     private var task:URLSessionDataTask?
     
     func getTranslation(stringAdress: String, infoBack: @escaping (Result<TranslationReturned,APIErrors>)->Void) {
-        /*
-        guard toLanguage != "" else {
-            print("pas de texte")
-            return
-        }
-        */
-       // word = text
-       // let stringAdress = urlBase + askForWord + word + askForLanguage + toLanguage + authorization + code.rawValue + format
         
         guard let url = URL(string: stringAdress) else {
             infoBack(.failure(.invalidURL))
@@ -45,8 +27,6 @@ class TranslationService {
         
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
-        
-        //let session = URLSession(configuration: .default)
         
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
@@ -65,8 +45,6 @@ class TranslationService {
                 }
                 do {
                     let translationDone = try JSONDecoder().decode(TranslationReturned.self, from: dataUnwrapped)
-                    
-                    //let wordTranslated = translationDone.data.translations[0] // À passer dans le contrôleur
                     infoBack(.success(translationDone))
                 } catch {
                     infoBack(.failure(.badFile))

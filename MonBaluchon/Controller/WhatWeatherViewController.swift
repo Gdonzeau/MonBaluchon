@@ -8,7 +8,13 @@
 import UIKit
 
 class WhatWeatherViewController: UIViewController {
-    //var defaultTown = "New York"
+    private let urlBase = "http://api.openweathermap.org/data/2.5/weather?"
+    private let authorization = "&appid="
+    private var code = Keys.weather
+    private var place = "q="
+    private var andUnits = "&units="
+    private var metric = "metric"
+    
     @IBOutlet weak var townName: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var showWeather: UILabel!
@@ -49,13 +55,17 @@ class WhatWeatherViewController: UIViewController {
             return
         }
         townName.resignFirstResponder()
-        WeatherService.shared.getWeather(town: town) {
+        guard let httpTown = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            return
+        }
+        let stringAdress = urlBase + place + httpTown + authorization + code.rawValue + andUnits + metric
+        
+        WeatherService.shared.getWeather(stringAdress: stringAdress) {
             message in
 
             self.toggleActivityIndicator(shown: false)
             switch message {
             case.success(let results):
-                print("results reçu : \(results)")
                 let iconUrl = "http://openweathermap.org/img/w/\(results.weather[0].icon).png"
 
                 guard let url = URL(string: iconUrl) else {
@@ -85,9 +95,14 @@ class WhatWeatherViewController: UIViewController {
             allErrors(errorMessage: "Town's name incorrect.")
             return
         }
+        guard let httpTown = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            return
+        }
+        let stringAdress = urlBase + place + httpTown + authorization + code.rawValue + andUnits + metric
+        
 
         villeParDefault.resignFirstResponder()
-        WeatherService.shared.getWeather(town: town) {
+        WeatherService.shared.getWeather(stringAdress: stringAdress) {
             message in
 
             self.toggleActivityIndicator(shown: false)

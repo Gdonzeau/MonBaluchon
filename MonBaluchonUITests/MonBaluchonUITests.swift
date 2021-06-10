@@ -4,7 +4,7 @@
 //
 //  Created by Guillaume Donzeau on 18/05/2021.
 //
-
+/*
 import XCTest
 
 class MonBaluchonUITests: XCTestCase {
@@ -40,3 +40,4 @@ class MonBaluchonUITests: XCTestCase {
         }
     }
 }
+*/
