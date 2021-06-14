@@ -7,26 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0458F660266E12BD00650CC3 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458F65F266E12BD00650CC3 /* Date.swift */; };
-		0458F665266E156400650CC3 /* CurrentDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458F664266E156400650CC3 /* CurrentDay.swift */; };
 		046B36742653288B0073BCC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36732653288B0073BCC0 /* AppDelegate.swift */; };
 		046B36762653288B0073BCC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36752653288B0073BCC0 /* SceneDelegate.swift */; };
 		046B36782653288B0073BCC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36772653288B0073BCC0 /* ViewController.swift */; };
 		046B367B2653288B0073BCC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046B36792653288B0073BCC0 /* Main.storyboard */; };
 		046B367D2653288F0073BCC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046B367C2653288F0073BCC0 /* Assets.xcassets */; };
 		046B36802653288F0073BCC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046B367E2653288F0073BCC0 /* LaunchScreen.storyboard */; };
-		046B368B2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B368A2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift */; };
+		046B368B2653288F0073BCC0 /* ConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B368A2653288F0073BCC0 /* ConversionTests.swift */; };
 		046B36962653288F0073BCC0 /* MonBaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36952653288F0073BCC0 /* MonBaluchonUITests.swift */; };
 		046B36B62653CF2E0073BCC0 /* ConversionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36B52653CF2E0073BCC0 /* ConversionService.swift */; };
 		046B36C926541B950073BCC0 /* ChangeValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36C826541B950073BCC0 /* ChangeValueViewController.swift */; };
 		046B36D02654704B0073BCC0 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36CF2654704B0073BCC0 /* WeatherService.swift */; };
 		046B36DA265470D70073BCC0 /* WhatWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36D9265470D70073BCC0 /* WhatWeatherViewController.swift */; };
 		046B36DF26554BEE0073BCC0 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36DE26554BEE0073BCC0 /* TranslationViewController.swift */; };
-		046B36E42655B12C0073BCC0 /* testApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36E32655B12B0073BCC0 /* testApple.swift */; };
 		046B36E926566BB00073BCC0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36E826566BB00073BCC0 /* Weather.swift */; };
 		046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36F5265692BD0073BCC0 /* TranslationService.swift */; };
 		046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B36FD2656BD2D0073BCC0 /* Translation.swift */; };
-		046B370E2657B52D0073BCC0 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B370D2657B52D0073BCC0 /* Currencies.swift */; };
 		046B37192657C0420073BCC0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B37182657C0410073BCC0 /* Currency.swift */; };
 		046B3726265808850073BCC0 /* AllRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3725265808850073BCC0 /* AllRates.swift */; };
 		047FAA662666C6DC00C477F4 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA652666C6DC00C477F4 /* NetworkErrors.swift */; };
@@ -38,7 +34,7 @@
 		047FAA8D26690D1700C477F4 /* MonBaluchonTestsWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA8C26690D1700C477F4 /* MonBaluchonTestsWeather.swift */; };
 		047FAA9226690D6F00C477F4 /* FakeResponseWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA9126690D6F00C477F4 /* FakeResponseWeather.swift */; };
 		047FAA9A2669783900C477F4 /* FakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FAA992669783900C477F4 /* FakeResponse.swift */; };
-		04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE2265A9ECA0059C5AB /* Languages.swift */; };
+		048E6003267771A9002303DA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E6002267771A9002303DA /* Config.swift */; };
 		04A5ACE8265AAB9C0059C5AB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5ACE7265AAB9C0059C5AB /* Language.swift */; };
 		04EDF67A2660527A00004FEC /* ConversionRUB.json in Resources */ = {isa = PBXBuildFile; fileRef = 04EDF6792660527A00004FEC /* ConversionRUB.json */; };
 		04EDF6822660556700004FEC /* FakeResponseCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDF6812660556700004FEC /* FakeResponseCurrency.swift */; };
@@ -63,8 +59,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0458F65F266E12BD00650CC3 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		0458F664266E156400650CC3 /* CurrentDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDay.swift; sourceTree = "<group>"; };
 		046B36702653288B0073BCC0 /* MonBaluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonBaluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046B36732653288B0073BCC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046B36752653288B0073BCC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +68,7 @@
 		046B367F2653288F0073BCC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		046B36812653288F0073BCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046B36862653288F0073BCC0 /* MonBaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonBaluchonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		046B368A2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonTestsCurrency.swift; sourceTree = "<group>"; };
+		046B368A2653288F0073BCC0 /* ConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionTests.swift; sourceTree = "<group>"; };
 		046B368C2653288F0073BCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046B36912653288F0073BCC0 /* MonBaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonBaluchonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046B36952653288F0073BCC0 /* MonBaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonUITests.swift; sourceTree = "<group>"; };
@@ -84,11 +78,9 @@
 		046B36CF2654704B0073BCC0 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		046B36D9265470D70073BCC0 /* WhatWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatWeatherViewController.swift; sourceTree = "<group>"; };
 		046B36DE26554BEE0073BCC0 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
-		046B36E32655B12B0073BCC0 /* testApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testApple.swift; sourceTree = "<group>"; };
 		046B36E826566BB00073BCC0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		046B36F5265692BD0073BCC0 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
 		046B36FD2656BD2D0073BCC0 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
-		046B370D2657B52D0073BCC0 /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		046B37182657C0410073BCC0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		046B3725265808850073BCC0 /* AllRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRates.swift; sourceTree = "<group>"; };
 		047FAA652666C6DC00C477F4 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
@@ -100,7 +92,7 @@
 		047FAA8C26690D1700C477F4 /* MonBaluchonTestsWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonTestsWeather.swift; sourceTree = "<group>"; };
 		047FAA9126690D6F00C477F4 /* FakeResponseWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseWeather.swift; sourceTree = "<group>"; };
 		047FAA992669783900C477F4 /* FakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponse.swift; sourceTree = "<group>"; };
-		04A5ACE2265A9ECA0059C5AB /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		048E6002267771A9002303DA /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		04A5ACE7265AAB9C0059C5AB /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		04EDF6792660527A00004FEC /* ConversionRUB.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ConversionRUB.json; sourceTree = "<group>"; };
 		04EDF6812660556700004FEC /* FakeResponseCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseCurrency.swift; sourceTree = "<group>"; };
@@ -168,7 +160,7 @@
 		046B36892653288F0073BCC0 /* MonBaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
-				046B368A2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift */,
+				046B368A2653288F0073BCC0 /* ConversionTests.swift */,
 				047FAA7D2667D1C900C477F4 /* MonBaluchonTestsTranslation.swift */,
 				047FAA8C26690D1700C477F4 /* MonBaluchonTestsWeather.swift */,
 				04EDF6792660527A00004FEC /* ConversionRUB.json */,
@@ -198,14 +190,9 @@
 			children = (
 				046B37182657C0410073BCC0 /* Currency.swift */,
 				046B3725265808850073BCC0 /* AllRates.swift */,
-				046B370D2657B52D0073BCC0 /* Currencies.swift */,
-				04A5ACE2265A9ECA0059C5AB /* Languages.swift */,
 				04A5ACE7265AAB9C0059C5AB /* Language.swift */,
 				046B36FD2656BD2D0073BCC0 /* Translation.swift */,
 				046B36E826566BB00073BCC0 /* Weather.swift */,
-				046B36E32655B12B0073BCC0 /* testApple.swift */,
-				047FAA652666C6DC00C477F4 /* NetworkErrors.swift */,
-				0458F65F266E12BD00650CC3 /* Date.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,7 +234,8 @@
 				046B36B52653CF2E0073BCC0 /* ConversionService.swift */,
 				046B36F5265692BD0073BCC0 /* TranslationService.swift */,
 				046B36CF2654704B0073BCC0 /* WeatherService.swift */,
-				0458F664266E156400650CC3 /* CurrentDay.swift */,
+				047FAA652666C6DC00C477F4 /* NetworkErrors.swift */,
+				048E6002267771A9002303DA /* Config.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -394,18 +382,14 @@
 				046B36F6265692BD0073BCC0 /* TranslationService.swift in Sources */,
 				046B36FE2656BD2D0073BCC0 /* Translation.swift in Sources */,
 				047FAA662666C6DC00C477F4 /* NetworkErrors.swift in Sources */,
-				046B36E42655B12C0073BCC0 /* testApple.swift in Sources */,
-				04A5ACE3265A9ECB0059C5AB /* Languages.swift in Sources */,
-				0458F660266E12BD00650CC3 /* Date.swift in Sources */,
+				048E6003267771A9002303DA /* Config.swift in Sources */,
 				046B3726265808850073BCC0 /* AllRates.swift in Sources */,
 				046B36E926566BB00073BCC0 /* Weather.swift in Sources */,
 				046B36DF26554BEE0073BCC0 /* TranslationViewController.swift in Sources */,
-				046B370E2657B52D0073BCC0 /* Currencies.swift in Sources */,
 				046B36C926541B950073BCC0 /* ChangeValueViewController.swift in Sources */,
 				046B36DA265470D70073BCC0 /* WhatWeatherViewController.swift in Sources */,
 				046B36762653288B0073BCC0 /* SceneDelegate.swift in Sources */,
 				046B36D02654704B0073BCC0 /* WeatherService.swift in Sources */,
-				0458F665266E156400650CC3 /* CurrentDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +403,7 @@
 				047FAA9A2669783900C477F4 /* FakeResponse.swift in Sources */,
 				047FAA9226690D6F00C477F4 /* FakeResponseWeather.swift in Sources */,
 				04EDF68A266195F200004FEC /* URLSessionFake.swift in Sources */,
-				046B368B2653288F0073BCC0 /* MonBaluchonTestsCurrency.swift in Sources */,
+				046B368B2653288F0073BCC0 /* ConversionTests.swift in Sources */,
 				047FAA832667D23E00C477F4 /* FakeResponseTranslation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,23 +16,11 @@ class WeatherService {
     }
     
     private var session = URLSession(configuration: .default)
-    /*
-    private let urlBase = "http://api.openweathermap.org/data/2.5/weather?"
-    private let authorization = "&appid="
-    private var code = Keys.weather
-    private var place = "q="
-    private var andUnits = "&units="
-    private var metric = "metric"
-    */
+    
     private var task:URLSessionDataTask?
 
     func getWeather(stringAdress:String, infoBack: @escaping ((Result<WeatherReturned,APIErrors>)->Void)) {
-        /*
-        guard let httpTown = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-            return
-        }
-        let stringAdress = urlBase + place + httpTown + authorization + code.rawValue + andUnits + metric
-        */
+        
         guard let url = URL(string: stringAdress) else {
             infoBack(.failure(.invalidURL))
             return

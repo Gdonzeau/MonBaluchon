@@ -17,4 +17,5 @@ enum APIErrors: String, Error {
     case invalidURL = "Not the right adress."
     case invalidStatusCode
     case errorGenerated
+    
 }

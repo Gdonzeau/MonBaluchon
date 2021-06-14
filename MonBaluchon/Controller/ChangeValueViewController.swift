@@ -11,12 +11,12 @@ class ChangeValueViewController: UIViewController {
     
     var currency:Currency!
     var currencyBase:Currency!
-    
+    /*
     private let urlBase = "http://data.fixer.io/api/latest?"
     private let authorization = "&access_key="
     private var code = Keys.change
     //private var value = "USD"
-    
+    */
     private var dicoCurrencies:[String:Double] = [:]
     
     @IBOutlet weak var buttonCurrency: UIButton!
@@ -31,6 +31,21 @@ class ChangeValueViewController: UIViewController {
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
     }
+    @IBAction func getConversion(_ sender: UIButton) {
+        conversion()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = .large
+        } else {
+            activityIndicator.style = .whiteLarge
+        }
+        toggleActivityIndicator(shown: false)
+        // Do any additional setup after loading the view.
+    }
+    
 }
 
 extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -41,43 +56,22 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         // print("2")
-        return currenciesAvailable.count
+        return Config.Currency.currenciesAvailable.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component: Int)-> String? {
         // print("3")
-        return currenciesAvailable[row]
+        return Config.Currency.currenciesAvailable[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("4")
-        labelCurrencyOrigin.text = currenciesAvailable[pickerView.selectedRow(inComponent: 0)]
-        labelCurrency.text = currenciesAvailable[pickerView.selectedRow(inComponent: 1)]
+        labelCurrencyOrigin.text = Config.Currency.currenciesAvailable[pickerView.selectedRow(inComponent: 0)]
+        labelCurrency.text = Config.Currency.currenciesAvailable[pickerView.selectedRow(inComponent: 1)]
         
         if dicoCurrencies != [:] {
-            if let newCurrencyText = dicoCurrencies[currenciesAvailable[pickerView.selectedRow(inComponent: 1)]], let currencyFrom = dicoCurrencies[currenciesAvailable[pickerView.selectedRow(inComponent: 0)]]{
+            if let newCurrencyText = dicoCurrencies[Config.Currency.currenciesAvailable[pickerView.selectedRow(inComponent: 1)]], let currencyFrom = dicoCurrencies[Config.Currency.currenciesAvailable[pickerView.selectedRow(inComponent: 0)]]{
                 update(valueOfChange: newCurrencyText,currencyFrom: currencyFrom)
             }
         }
-    }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            activityIndicator.style = .large
-        } else {
-            activityIndicator.style = .whiteLarge
-        }
-        /*
-         // Calendrier
-         let lastDay = CurrentDay.lastDateUsed
-         calendar()
-         print("Test : \(CurrentDay.lastDateUsed)")
-         
-         // Fin Calendrier
-         */
-        toggleActivityIndicator(shown: false)
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -93,25 +87,19 @@ extension ChangeValueViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - Private methods
+
 extension ChangeValueViewController {
     
-    @IBAction func getConversion(_ sender: UIButton) {
-        conversion()
-    }
     
-    func conversion() {
+    private func conversion() {
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
         toggleActivityIndicator(shown: true)
         createCurrency()
         
-        let stringAdress = urlBase + authorization + code.rawValue
-        /*
-         guard let currencyChosen = currency.name else {
-         allErrors(errorMessage: "Currency unknown")
-         return
-         }
-         */
+        let stringAdress = Config.Currency.urlBase + Config.Currency.authorization + Config.Currency.code.rawValue
+        
         ConversionService.shared.getConversion(stringAdress: stringAdress) { result in
             self.toggleActivityIndicator(shown: false)
             switch result {
@@ -139,11 +127,11 @@ extension ChangeValueViewController {
     private func createCurrency() {
         
         let currencyIndex = currencyPickerView.selectedRow(inComponent: 1)
-        let currencyName = currenciesAvailable[currencyIndex]
+        let currencyName = Config.Currency.currenciesAvailable[currencyIndex]
         currency = Currency(name: currencyName)
         
         let currencyOrigin = currencyPickerView.selectedRow(inComponent: 0)
-        let currencyOriginName = currenciesAvailable[currencyOrigin]
+        let currencyOriginName = Config.Currency.currenciesAvailable[currencyOrigin]
         currencyBase = Currency(name: currencyOriginName)
     }
     private func toggleActivityIndicator(shown: Bool) {
@@ -152,7 +140,6 @@ extension ChangeValueViewController {
     }
     private func update(valueOfChange: Double, currencyFrom: Double) {
         var newCorrectionText = ""
-        //  course.text = String(format: "%.2f", valueOfChange * currencyFrom)
         
         if sumEURToConvert.text != "" {
             if let correctionText = sumEURToConvert.text { // Get a available format
@@ -177,35 +164,6 @@ extension ChangeValueViewController {
                 resultOfConversion.text = "0"
             }
         }
-    }
-    func calendar() {
-        // get the current date and time
-        let currentDateTime = Date()
-        // get the user's calendar
-        let userCalendar = Calendar.current
-        // choose which date and time components are needed
-        let requestedComponents: Set<Calendar.Component> = [
-            .year,
-            .month,
-            .day
-        ]
-        
-        // get the components
-        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
-        
-        // now the components are available
-        guard let year = dateTimeComponents.year else {
-            return
-        }
-        guard let month = dateTimeComponents.month else {
-            return
-        }
-        guard let day = dateTimeComponents.day else {
-            return
-        }
-        CurrentDay.year = String(year)
-        CurrentDay.month = String(month)
-        CurrentDay.day = String(day)
     }
     
     private func allErrors(errorMessage: String) {

@@ -47,12 +47,11 @@ class ConversionService {
                     infoBack(.success(data))
                     
                 } catch {
-                    infoBack(.failure(.badFile))
+                    infoBack(.failure(.decodingError))
                 }
             }
         }
         task?.resume()
-        print("Demande")
     }
     
     func createConversionRequest(url:URL) -> URLRequest {

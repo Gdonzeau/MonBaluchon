@@ -61,8 +61,10 @@ class MonBaluchonTestsTranlation: XCTestCase {
             switch result {
             
             case.success( _):
-                XCTFail()
+                XCTFail("Should not succeed")
             case.failure(let error):
+                //Then
+                XCTAssertEqual(errorExpected, error)
                 errorReceived = error
             }
             //Then

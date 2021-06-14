@@ -8,12 +8,6 @@
 import UIKit
 
 class WhatWeatherViewController: UIViewController {
-    private let urlBase = "http://api.openweathermap.org/data/2.5/weather?"
-    private let authorization = "&appid="
-    private var code = Keys.weather
-    private var place = "q="
-    private var andUnits = "&units="
-    private var metric = "metric"
     
     @IBOutlet weak var townName: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -58,7 +52,7 @@ class WhatWeatherViewController: UIViewController {
         guard let httpTown = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return
         }
-        let stringAdress = urlBase + place + httpTown + authorization + code.rawValue + andUnits + metric
+        let stringAdress = Config.Weather.urlBase + Config.Weather.place + httpTown + Config.Weather.authorization + Config.Weather.code.rawValue + Config.Weather.andUnits + Config.Weather.metric
         
         WeatherService.shared.getWeather(stringAdress: stringAdress) {
             message in
@@ -98,7 +92,7 @@ class WhatWeatherViewController: UIViewController {
         guard let httpTown = town.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return
         }
-        let stringAdress = urlBase + place + httpTown + authorization + code.rawValue + andUnits + metric
+        let stringAdress = Config.Weather.urlBase + Config.Weather.place + httpTown + Config.Weather.authorization + Config.Weather.code.rawValue + Config.Weather.andUnits + Config.Weather.metric
         
 
         villeParDefault.resignFirstResponder()

@@ -95,10 +95,10 @@ extension TranslationViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return languagesAvailable.count
+        return Config.Language.languagesAvailable.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component: Int)-> String? {
-        return languagesAvailable[row]
+        return Config.Language.languagesAvailable[row]
     }
 }
 
@@ -112,8 +112,8 @@ extension TranslationViewController: UITextFieldDelegate {
 extension TranslationViewController {
     func chooseLanguage() {
         let languageIndex = languagesPickerView.selectedRow(inComponent: 0)
-        let languageName = languagesAvailable[languageIndex]
-        language = Language(code: languagesSet[languageName])
+        let languageName = Config.Language.languagesAvailable[languageIndex]
+        language = Language(code: Config.Language.languagesSet[languageName])
         if let languageChoosen = language.code {
             languageCode = languageChoosen
             print("Code: \(languageCode)")
