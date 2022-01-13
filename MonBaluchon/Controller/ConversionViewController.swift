@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChangeValueViewController: UIViewController {
+class ConversionViewController: UIViewController {
     
     var currency:Currency!
     var currencyBase:Currency!
@@ -19,13 +19,29 @@ class ChangeValueViewController: UIViewController {
     */
     private var dicoCurrencies:[String:Double] = [:]
     
+    @IBOutlet weak var labelCurrencyOrigin: UILabel!
+    @IBOutlet weak var labelCurrency: UILabel!
+    @IBOutlet weak var sumEURToConvert: UITextField!
+    @IBOutlet weak var resultOfConversion: UITextField!
     @IBOutlet weak var buttonCurrency: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var currencyPickerView: UIPickerView!
+    
+    
+    @IBAction func getConversion(_ sender: UIButton) {
+        conversion()
+    }
+    
+    /*
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencyPickerView: UIPickerView!
     @IBOutlet weak var labelCurrencyOrigin: UILabel!
     @IBOutlet weak var labelCurrency: UILabel!
     @IBOutlet weak var sumEURToConvert: UITextField!
     @IBOutlet weak var resultOfConversion: UITextField!
+    
+    @IBOutlet weak var buttonCurrency: UIButton!
+    
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         sumEURToConvert.resignFirstResponder()
@@ -34,6 +50,7 @@ class ChangeValueViewController: UIViewController {
     @IBAction func getConversion(_ sender: UIButton) {
         conversion()
     }
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +65,7 @@ class ChangeValueViewController: UIViewController {
     
 }
 
-extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension ConversionViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         // print("1")
@@ -75,7 +92,7 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
 }
 
-extension ChangeValueViewController: UITextFieldDelegate {
+extension ConversionViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
@@ -89,7 +106,7 @@ extension ChangeValueViewController: UITextFieldDelegate {
 
 // MARK: - Private methods
 
-extension ChangeValueViewController {
+extension ConversionViewController {
     
     
     private func conversion() {

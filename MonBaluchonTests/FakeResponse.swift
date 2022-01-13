@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/*
 class FakeResponse {
     
     static var stringJson: String {
@@ -45,3 +45,4 @@ class FakeResponse {
     class CurrencyError: Error {}
     static let error = CurrencyError()
 }
+*/

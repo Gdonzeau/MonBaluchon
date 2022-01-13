@@ -35,7 +35,6 @@ class URLSessionFake: URLSession {
         return task
     }
  
-
 }
 
 class URLSessionDataTaskFake: URLSessionDataTask {

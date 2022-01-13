@@ -325,7 +325,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="getConversion:" destination="JoN-AT-WME" eventType="touchUpInside" id="37h-7B-mQC"/>
+                                    <action selector="getConversion:" destination="JoN-AT-WME" eventType="touchUpInside" id="xyr-nM-rrm"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DOI-KZ-lLN">
@@ -414,27 +414,20 @@
                             <constraint firstItem="DOI-KZ-lLN" firstAttribute="centerX" secondItem="012-7C-aBH" secondAttribute="centerX" id="uN0-Oy-L82"/>
                             <constraint firstItem="uxw-IY-9cu" firstAttribute="top" secondItem="aLj-OV-dBe" secondAttribute="top" id="w3O-q1-NoO"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="2A9-3W-JmX" appends="YES" id="2hs-ll-Mfk"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cours Devise" image="Dollar" id="fWZ-Ba-PHA"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="DOI-KZ-lLN" id="T5D-qx-fBT"/>
-                        <outlet property="buttonCurrency" destination="g4K-iw-UwO" id="a87-05-rnT"/>
-                        <outlet property="currencyPickerView" destination="uxw-IY-9cu" id="H2y-hH-OGs"/>
-                        <outlet property="labelCurrency" destination="3PT-V0-Z1w" id="ebo-Qo-wr7"/>
-                        <outlet property="labelCurrencyOrigin" destination="aLj-OV-dBe" id="Zzq-ra-kNs"/>
-                        <outlet property="resultOfConversion" destination="PRw-zp-D7W" id="5rQ-gO-TDT"/>
-                        <outlet property="sumEURToConvert" destination="PnA-Zx-Bod" id="zDt-Eq-OC4"/>
+                        <outlet property="activityIndicator" destination="DOI-KZ-lLN" id="F4R-8w-4Mc"/>
+                        <outlet property="buttonCurrency" destination="g4K-iw-UwO" id="fTu-rW-Cwj"/>
+                        <outlet property="currencyPickerView" destination="uxw-IY-9cu" id="thW-2r-Abd"/>
+                        <outlet property="labelCurrency" destination="3PT-V0-Z1w" id="8bw-fW-CpK"/>
+                        <outlet property="labelCurrencyOrigin" destination="aLj-OV-dBe" id="Zn0-Lq-P6L"/>
+                        <outlet property="resultOfConversion" destination="PRw-zp-D7W" id="phg-qZ-HQU"/>
+                        <outlet property="sumEURToConvert" destination="PnA-Zx-Bod" id="87z-NX-QbW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mj-bb-K08" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="2A9-3W-JmX">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="JoN-AT-WME" id="3eh-em-FkG"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="2A9-3W-JmX"/>
             </objects>
             <point key="canvasLocation" x="802.89855072463774" y="469.56521739130437"/>
         </scene>

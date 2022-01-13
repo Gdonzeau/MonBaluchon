@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WhatWeatherViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
     @IBOutlet weak var townName: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -118,7 +118,7 @@ class WhatWeatherViewController: UIViewController {
         }
     }
 }
-extension WhatWeatherViewController: UITextFieldDelegate {
+extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         townName.resignFirstResponder()
         villeParDefault.resignFirstResponder()
@@ -140,7 +140,7 @@ extension UIImageView {
         }
     }
 }
-extension WhatWeatherViewController {
+extension WeatherViewController {
 
     func buildStringAnswer(result: [Any])-> String {
         let townName = result[0]
